@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">	
+	<link rel="stylesheet" href="http://sd-22074.dedibox.fr/casig/gamp/css/section_mobile.css" type="text/css" media="screen">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"/></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head>
+<body>
+<div data-role="page" id="home">
+	
+	<img class="home_initial_header_img" src="./img/mobile/generic_background.png" />
+	<div class="home_tagline">Outil de gestion des abonnés</div>
+	<div data-role="content">
+						<form class="login_form" action="login.php" method="post" >			
+							<input class="wrapped_input login_email" type="text" name="login" value="" placeholder="Identifiant" />
+							<input class="wrapped_input login_password" type="password" name="password" placeholder="Mot de passe" />							
+							<div class="cta_button_wrapper">
+								<input class="button login_submit" type="submit" value="Identifiez-vous" name="login_submit" />
+							</div>
+							<input type="hidden" name="__login" value="Login" />
+						</form>
+				</div>
+			</div>
+	</div><!-- content -->
+</div><!-- Page -->
+</body>
+</html>

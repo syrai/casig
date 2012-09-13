@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Untitled Document</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"/></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head>
+<body>
+<div data-role="header" id="header_app" name="header_app">
+		
+		<!--<a href="index.html" data-role="button" data-iconpos="notext" data-icon="home" class="ui-btn-left"></a>-->
+		<a href="#" data-role="button" data-icon="check" name="statut_online" id="statut_online"  class="ui-btn-left"></a>
+		
+		<h1>Gestion Abonnés</h1>
+		
+		
+		<a href="#" data-role="button" data-theme="b" data-icon="gear"  id="campagne" class="ui-btn-right">campagne</a>
+		
+		<!--<a href="#" data-role="button" data-theme="b" data-icon="gear" class="ui-btn-right" id="campagne">campagne</a>-->
+		<div data-role="navbar"  data-iconpos="left">
+		<ul>
+		<li><a data-theme="b" data-icon="home" id="producteur" href="#" >Producteurs</a></li>
+		<li><a data-theme="b" data-icon="grid" id="tournee" href="#">Tournées</a></li>
+		<li><a data-theme="b" data-icon="star" id="import" href="#">Import/Export</a></li>
+		</ul>
+		</div>
+</div>
+	<div id="div_producteur" data-role="content">
+	<h1>Test</h1>
+	</div>
+	<script type="text/javascript">
+
+		afficher_formulaire_recherche_producteur();
+	
+	function afficher_formulaire_recherche_producteur()
+	{
+		buffer='<label for="raisonsocial">Raison sociale</label>';
+		buffer=buffer + '<input type="text" name="raisonsocial" id="raisonsocial">';
+		buffer=buffer + '<input type="submit" id="valide_recherche" name="valide_recherche" value="Rechercher">';
+		$('#div_producteur').html(buffer);
+		$('#div_producteur').trigger('create');
+		// Définit l'evenement
+		$('#valide_recherche').click(function(){
+			afficher_resultat_recherche();
+		});
+	}
+	function afficher_resultat_recherche(){
+		//alert ($('#producteur').val());
+		$.ajax({
+			type: 'POST',
+			url: 'producteur.php',
+			datatype: 'json',
+			data: {
+				action: 'lancer_recherche',
+				producteur : $('#raisonsocial').val()
+			},
+			success : function(data){
+				buffer='<div data-role="collapsible" data-collapsed="false">';
+				buffer=buffer + '<h3>Liste des abonnés</h3>';
+				buffer=buffer + '<ul data-role="listview" data-theme="g">';
+				var obj = jQuery.parseJSON(data);
+				for(i=0;i<obj.length;i++){
+					var tmp=obj[i];
+					buffer=buffer + '<li><a href="#" onclick="afficher_fiche_producteur(' + tmp[0] + ')" >' + tmp[1] + ' ' + tmp [2] + ' ' + tmp[3] +'</a></li>';
+				}
+				buffer=buffer + '</ul></div>';
+				$('#div_producteur').html(buffer);
+				$('#div_producteur').trigger('create');
+			}
+		})
+	}
+	function afficher_fiche_producteur(producteur)
+	{
+		$.ajax({
+			type: 'POST',
+			url: 'producteur.php',
+			datatype: 'json',
+			async: false,
+			data: {
+				action : 'info_producteur',
+				producteur : producteur
+			},
+			success : function(data){
+				var obj =jQuery.parseJSON(data);
+				var row = obj[0];
+				if (row[3]!=null) {adresse=row[3];} else {adresse='';}
+				
+				buffer='<div data-role="collapsible" data_collapsed="true" data-theme="e" data-content-theme="c">';
+				buffer=buffer + '<h1>' + row[0] + ' ' + row[1] + '</h1>';
+				buffer=buffer + '<table><tr>';
+				buffer=buffer + '<td>Raison sociale:</td><td>' + row[2] + '</td></tr>';
+				buffer=buffer + '<td>Adresse:</td><td>' + adresse + '</td></tr>';
+				buffer=buffer + '<td>Type abonnement:</td><td>' + row[4] + '</td></tr>';
+				buffer=buffer + '</table>';
+				buffer=buffer + '</div>';
+				
+				$('#div_producteur').html(buffer);
+				$('#div_producteur').trigger('create');
+			
+			}
+		});
+	}
+	</script>
+	<div data-role="content" class="pagecontent" id="pagecontent" >
+<!--a href="#" data-role="button">dd</a>-->
+</div>
+<div data-role="footer" id="footer_page" style="display: none" class="ui-bar">
+
+
+</div>
+</body>
+</html>

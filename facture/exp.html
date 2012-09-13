@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Export</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"/></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+
+</head>
+<body>	
+<div id="div_producteur" data-role="content">
+	
+</div>
+<script type="text/javascript">
+	
+    afficher_modif_statut();
+    
+function afficher_modif_statut(){
+		$.ajax({
+				type: 'POST',
+				url: 'ajax_facture.php',
+				data: {
+						action: 'liste_campagne'
+					   },
+				success : function(data){	
+									buffer='<h1>Export</h1>';
+									buffer=buffer + '<select name="a" id ="a" data-native-menu="false" data-mini="true">';
+									buffer=buffer + '<option>Campagne...</option>';
+									var obj = jQuery.parseJSON(data);
+									for(i=0;i<obj.length;i++)
+										{
+										var tmp=obj[i];
+										buffer=buffer + '<option value="' + tmp[0] + '">' + tmp[1] + '</option>';
+										}
+									buffer=buffer + '</select>';
+									buffer=buffer + '<input type="submit" name="d" id="d" data-role="button" value="Exporter">';
+									
+									$('#div_producteur').html(buffer);
+									$('#div_producteur').trigger('create');				
+									$('#d').click(function())
+										{
+									exporter_facture($('select#a').val());
+										}
+													
+										}
+				});
+	}
+function exporter_facture(campagne)
+	{
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_facture.php',
+			datatype: 'json',
+			data: {
+				action : 'export_facture',
+				campagne : campagne
+			},
+			success : function(data){
+			}
+		});
+	}
+</script>
+</body>
+</html>

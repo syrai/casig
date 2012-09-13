@@ -1,0 +1,11 @@
+CACHE MANIFEST
+
+# v.01
+CACHE :
+*
+
+FALLBACK
+sd-22074.dedibox.fr/casig/gamp/test/offline.php
+
+NETWORK:
+*

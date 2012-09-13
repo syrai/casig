@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Nouveau contact</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"/></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head>
+<body>
+<div data-role="header" id="header_app" name="header_app">	
+		<h1>Gestion Abonnés</h1>	
+</div>
+	<div id="div_contact" data-role="content">
+	<table>
+<tr><td>Entreprise :</td><td><input type="text" name="raison_social"/></td></tr>
+<tr><td>Personne :</td><td><input type="text" name="nom"/></td></tr>
+<tr><td>Adresse :</td><td><input type="text" name="adresse"/></td></tr>
+<tr><td>Code Postal :</td><td><input type="text" name="codepostal"/></td></tr>
+<tr><td>Commune :</td><td><input type="text" name="commune"/></td></tr>
+<tr><td>Login :</td><td><input type="text" name="login"/></td></tr>
+<tr><td>Mot de passe :</td><td><input type="text" name="passe"/></td></tr>
+<tr><td>Mois :</td><td><input type="text" name="idmois"/></td></tr>
+<tr><td>Siret :</td><td><input type="text" name="siret"/></td></tr>
+<tr><td>Abonnement:</td><td><select name="abonnement">
+<?php
+
+include_once("../connexion/connex.inc.php");
+
+$idcom=connex("SIA","myparam");
+$requete="SELECT idtypeabonnement,libelle FROM ttypeabonnement ORDER by libelle";
+$result=pg_query($idcom,$requete);
+while($ligne=pg_fetch_array($result))
+{
+
+echo "<OPTION VALUE=\"".$ligne['idtypeabonnement']."\">".$ligne['libelle']."</OPTION>";	
+	
+}
+pg_free_result($result);
+?>
+</select></td></tr>
+<tr><td>Commune :</td><td><select name="com">
+<?php
+
+include_once("../connexion/connex.inc.php");
+
+$idcom=connex("SIA","myparam");
+$requete="SELECT codeinsee,nom as libelle FROM tcommunes ORDER by nom";
+$result=pg_query($idcom,$requete);
+while($ligne=pg_fetch_array($result))
+{
+
+echo "<OPTION VALUE=\"".$ligne['codeinsee']."\">".$ligne['libelle']."</OPTION>";	
+	
+}
+pg_free_result($result);
+?>
+</select></td></tr>
+</div>
+</body>
+</html>
