@@ -14,7 +14,8 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="inf
 		}
 	
 		pg_close($idcom);
-	}	
+	}
+	// Infor sur l'abonnement
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="info_abonnement_1")
 	{
 		$idcom=connex("SIA","myparam");
