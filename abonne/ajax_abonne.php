@@ -1,4 +1,5 @@
 <?php
+//Include de connexion
 include("../connexion/connex.inc.php");
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="info_abonne")
 	{
