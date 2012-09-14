@@ -1,6 +1,7 @@
 <?php
 //Include de connexion
 include("../connexion/connex.inc.php");
+// Informations sur les abonnés
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="info_abonne")
 	{
 		$idcom=connex("SIA","myparam");
