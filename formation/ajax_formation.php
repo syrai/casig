@@ -86,6 +86,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="cha
 	$idcom=connex("SIA","myparam");
 	$requete="UPDATE tcycle SET lieu='".$_POST['lieuformation']."' WHERE id_cycle='".$_POST['idcycle']."'";
 	$result=pg_query($idcom,$requete);	
+	console.log($requete);
 	pg_close($idcom);
 }
 // Modification de la date 1

@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>Modif formation</title>
-	<link rel="stylesheet" href="popup-examples.css" />
+	
 	 <?php
 	include_once("../connexion/version_jq.php");
 	?>
@@ -32,16 +32,16 @@ echo "<option value=\"".$ligne['libelle']."\">".$ligne['libelle']."</option>";
 }
 pg_free_result($result);
 ?>
-</select></td><td><a href="#" data-role="button" data-icon="refresh" data-iconpos="notext" onclick="modif_lieu">Delete</a></td></tr>
+</select></td><td><a href="#" data-role="button" data-icon="refresh" data-iconpos="notext" onclick="modif_lieu()">Delete</a></td></tr>
 <tr><td><label for="date1">Début :</label></td><td><input type="date" name="date1" id="date1"/></td><td><a href="" data-role="button" data-icon="refresh" data-iconpos="notext" onclick="modif_date1()">Delete</a></td></tr>
-<tr><td><label for="date2">Fin :</label></td><td><input type="date" name="date2" id="date2"/></td><td><a href="#" data-role="button" data-icon="refresh" data-iconpos="notext" onclick="modif_date2">Delete</a></td></tr>
+<tr><td><label for="date2">Fin :</label></td><td><input type="date" name="date2" id="date2"/></td><td><a href="#" data-role="button" data-icon="refresh" data-iconpos="notext" onclick="modif_date2()">Delete</a></td></tr>
 </table>
 
 
 </div>
 <script type="text/javascript">
 
-
+// Changer le lieu d'une formation
 function modif_lieu(){
 		$.ajax({
 			type: 'POST',
@@ -55,6 +55,7 @@ function modif_lieu(){
 			}
 		})
 	}
+// Changer la date de début d'une formation
 	function modif_date1(){
 		$.ajax({
 			type: 'POST',
