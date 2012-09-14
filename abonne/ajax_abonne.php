@@ -32,7 +32,8 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="inf
 		}
 	
 		pg_close($idcom);
-	}		
+	}
+	//
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="abonne_historique")
 	{
 		$idcom=connex("SIA","myparam");
