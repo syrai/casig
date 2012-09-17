@@ -61,7 +61,7 @@ dropzone.attachEvent('dragleave',sortie);
 }
 // traitement du dépot
 function depot(e){
-	event.preventDefault();
+	e.preventDefault();
 	// Liste des fichiers dropés
 	var fichiers = e.dataTransfer.files;
 	
@@ -78,8 +78,7 @@ function depot(e){
 		if (typeof window.FileReader !== 'undefined') {
 			reader = new FileReader();
 			reader.onload = function(event) {
-				dropzone.style.background = 'url('+event.target.result+') no-repeat
-center';
+				dropzone.style.background = 'url('+event.target.result+') no-repeatcenter';
 var img = document.createElement('img');
 img.src = event.target.result;
 // Ajout dans le DOM
