@@ -33,7 +33,8 @@
 			<div data-role="popup" id="popupLogin" data-theme="e"  data-rel="back" class="ui-btn-right">
 			
 				<div style="padding:10px 20px;" >
-				  
+			<fieldset>
+			<legend>Votre identité</legend>
 		          <label for="un" class="ui-hidden-accessible">Username:</label>
 		          <input type="text" name="user" id="un" value="" placeholder="Identifiant" data-theme="c" />
 
@@ -41,6 +42,7 @@
 		          <input type="password" name="pass" id="pw" value="" placeholder="Mot de passe" data-theme="c" />
 
 		    	  <button type="submit" id="sub2" data-theme="f"  onclick="login()">Connexion</button>
+		    	  </fieldset>
 				</div>
 			
 		
