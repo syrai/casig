@@ -2,19 +2,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Untitled Document</title>
+	<title>Drag and drop</title>
 </head>
 <body>
-	<div id=”dropzone”></div>
-<script type="text/javascript">
-var dropzone = document.getElementById('dropzone');
-dropzone.ondrop = function(e) {
-  var length = e.dataTransfer.files.length;
-  for (var i = 0; i < length; i++) {
-    var file = e.dataTransfer.files[i];
-    ... // do whatever you want
-  }
-};
+	<div dropzone="copy f:image/jpeg f:image/png" ondrop="depot(event)"></div>
+<script>
+// Identifiant de l'élément de réception
+var dropzone = document.getElementById('drop');
+// Fonction de survol de la cible
+function entree(event){
+	event.preventDefault();	
+}
+//Fonction d'annulation du comportement par default
+function survol(event){
+	event.dataTransfer.dropEffect="copy";
+	event.preventDefault();
+	return false;
+}
+// Redfinition des événements
+if(window.addEventListener){
+	dropzone.addEventListener('dragover',survol);
+	dropzone.addEventListener('dragenter',entree);
+	} else {
+		dropzone.attachEvent('dragover',survol);
+		dropzone.attachEvent('dragenter',entree);
+	}
+// traitement du dépot
+function depot(event){
+	event.preventDefault();
+	// Liste des fichiers dropés
+	var fichiers = event.dataTransfer.files;
+	
+	// Boucle sur chacun des fichiers de la liste
+	for(var i=0 ; i<fichiers.length ; i+1){
+		// Affichage des informations
+		event.target.innerHTML += "<p>Nom : "+fichiers[i].name+"<br>";
+		event.target.innerHTML += "Taille :"+fichiers[i].size+" 0 </p>";
+		event.target.appendChild(img);
+	}
+}
+
 </script>
 </body>
 </html>
