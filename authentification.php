@@ -36,7 +36,7 @@
 			<fieldset>
 			<legend>Votre identité</legend>
 		          <label for="un" class="ui-hidden-accessible">Username:</label>
-		          <input type="text" name="user" id="un" value="" placeholder="Identifiant" data-theme="c" />
+		          <input type="text" name="user" autofocus required id="un" value="" placeholder="Identifiant" data-theme="c" />
 
 		          <label for="pw" class="ui-hidden-accessible">Password:</label>
 		          <input type="password" name="pass" id="pw" value="" placeholder="Mot de passe" data-theme="c" />
