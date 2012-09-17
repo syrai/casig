@@ -1,5 +1,5 @@
 <?php
-if(isset($_FILES) && is_array($_FILES)) {
+
 // Nombre de fichiers envoyés
 $nb = count($_FILES['f']['name']);
 echo $nb;
@@ -17,8 +17,5 @@ $uploaddir.$_FILES['f']['name'][$i]);
 if($copie) echo '<br><b>Fichier copié</b></p>'; else echo
 '<br><b>Erreur de copie</b></p>';
 }
-} else {
-echo 'Aucun fichier envoyé';
-}
-}
+} 
 ?>
