@@ -185,6 +185,8 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="mod
 	$requete="UPDATE tcartonet SET raison_social='".$_POST['raisonsocial']."',nom='".$_POST['nom']."'";
 	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
 	}
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
 		// Modification des information adresse dans tadressabonne
 		
 	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
