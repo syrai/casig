@@ -2,6 +2,7 @@
 if(isset($_FILES) && is_array($_FILES)) {
 // Nombre de fichiers envoyés
 $nb = count($_FILES['fichiers']['name']);
+echo $nb;
 // Chemin destination (répertoire courant + /upload/)
 $dir = realpath('.').'/test/';
 if($nb>0) {
