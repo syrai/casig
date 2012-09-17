@@ -182,7 +182,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="mod
 		// Modification de la raison sociale et du nom dans tcartonet
 		
 	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
-	$requete="UPDATE tcartonet SET raison_social='".$_POST['idexploitation']."',nom='".$_POST['idexploitation']."'";
+	$requete="UPDATE tcartonet SET raison_social='".$_POST['raisonsocial']."',nom='".$_POST['nom']."'";
 	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
 	}
 		// Modification des information adresse dans tadressabonne
