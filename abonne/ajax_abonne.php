@@ -1,11 +1,7 @@
 <?php
 //Include de connexion
 include("../connexion/connex.inc.php");
-<<<<<<< HEAD
-// Informations sur les abonnés
-=======
-// Test branche2
->>>>>>> bf4061833d9dc5a9d715e05fa1b8f49886c4d892
+
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="info_abonne")
 	{
 		$idcom=connex("SIA","myparam");
