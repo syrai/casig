@@ -1,20 +1,101 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Untitled Document</title>
+	<title>HTML5 : Drag and drop</title>
+
+<link rel="stylesheet" href="styles.css" type="text/css">
+<style>
+	#drop {
+		height: 200px;
+		width: 90%;
+		border: 9px dashed #bbb;
+		padding: 1em;
+		margin-bottom: 1em;
+	}
+	#drop:hover {
+		background:#cf9;
+	}
+	.deposezmoi{
+		background:#b5e766;
+		border: 3px dashed #79a633;
+	}
+	.wrap img {
+		max-width:100%;
+	}	
+</style>
 </head>
 <body>
-	<div id=”dropzone”></div>
-<script type="text/javascript">
-var dropzone = document.getElementById('dropzone');
-dropzone.ondrop = function(e) {
-  var length = e.dataTransfer.files.length;
-  for (var i = 0; i < length; i++) {
-    var file = e.dataTransfer.files[i];
-    ... // do whatever you want
-  }
+<div class="wrap">
+<form id="formulaire" method="post" action="ajax_test.php" enctype="multipart/form-data">
+	<p><strong>Déposer les fichiers...</strong></p>
+	<div id="drop" dropzone="copy f:image/jpeg f:image/png f:application/pdf" ondrop="depot(event);"></div>
+	<input type="submit" value="Envoyer">
+	<progress id="avancement" min="0" max="100" aria-valuemin="0" aria-valuemax="100"></progress>
+	<ouput id="infos"></ouput>
+</form>
+</div>
+	
+<script>
+// Identifiant de l'élément de réception
+var dropzone = document.getElementById('drop');
+// Fonction de survol de la cible
+function entree(event){
+	event.target.className= 'deposezmoi';
+	event.preventDefault();
+}
+// Function sortier surval
+function sortie(event){
+	event.target.className= '';
+	}
+//Fonction d'annulation du comportement par default
+function survol(event){
+	event.dataTransfer.dropEffect="copy";
+	event.preventDefault();
+	return false;
+}
+// Redéfinition des événements
+if(window.addEventListener) {
+dropzone.addEventListener('dragover',survol);
+dropzone.addEventListener('dragenter',entree);
+dropzone.addEventListener('dragleave',sortie);
+} else {
+dropzone.attachEvent('dragover',survol);
+dropzone.attachEvent('dragenter',entree);
+dropzone.attachEvent('dragleave',sortie);
+}
+// traitement du dépot
+function depot(e){
+	e.preventDefault();
+	// Liste des fichiers dropés
+	var fichiers = e.dataTransfer.files;
+	
+	// Boucle sur chacun des fichiers de la liste
+	for(var i=0 ; i<fichiers.length ; i+1){
+		// Mémorisation dans une variable en short
+			var f = fichiers[i];
+		// Affichage des informations
+		e.target.innerHTML += "<p>Nom : "+f.name+"<br>";
+		e.target.innerHTML += "Taille : "+f.size+" octets<br>";
+		e.target.innerHTML += "Type : "+f.type+"</p>";
+		// Si le type correspond à une image 
+		if(f.type.match('image.*')) {
+		if (typeof window.FileReader !== 'undefined') {
+			reader = new FileReader();
+			reader.onload = function(event) {
+				dropzone.style.background = 'url('+event.target.result+') no-repeatcenter';
+var img = document.createElement('img');
+img.src = event.target.result;
+// Ajout dans le DOM
+dropzone.parentNode.insertBefore(img,dropzone.nextSibling);
 };
+reader.readAsDataURL(f);
+} else alert("FileReader non supporté");
+}
+return false;
+	}
+}
+
 </script>
 </body>
 </html>
