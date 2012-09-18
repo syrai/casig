@@ -19,9 +19,7 @@
 <div data-role="page=" id="consabo">
 
 <div id="div_producteur" data-role="content">
-	<input type="search" id="valide_recherche" name="valide_recherche" placeholder="Nom exploitation..." value="" onchange="afficher_abonne()"/>
-	
-			
+	<input type="search" id="valide_recherche" name="valide_recherche" placeholder="Nom exploitation..." value="" onchange="afficher_abonne()"/>				
 <div data-role="popup" id="popupPanel" data-corners="false" data-theme="e" data-shadow="false" data-tolerance="0,0">
 
     <ul>
