@@ -36,7 +36,7 @@
 				var row = obj[0];	
 				
 					buffer='<h3>Modifier ' + row[1] + '</h3>';
-					buffer=buffer + '<ul data-role="listview" data-inset="true"';
+					buffer=buffer + '<ul data-role="listview" data-inset="true">';
 					buffer=buffer + '<li data-role="fieldcontain">';
 					buffer=buffer + '<label for="username">Exploitation : </label>';
 					buffer=buffer + '<input type="text" name="username" id="username" value="' + row[1] + '" />';
