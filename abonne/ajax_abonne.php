@@ -253,7 +253,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="mod
 {
 	$idcom=connex("SIA","myparam");
 	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
-	$requete="UPDATE tcartonet SET passe='".$_POST['pass']."'";
+	$requete="UPDATE tcartonet SET passe='".$_POST['passe']."'";
 	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
 	}
 	$result=pg_query($idcom,$requete);
