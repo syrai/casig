@@ -36,15 +36,15 @@
 				var row = obj[0];	
 				
 					buffer='<h3>Modifier ' + row[1] + '</h3>';
-					buffer=buffer + '<ul data-role="listview" data-inset="true">';
+					buffer=buffer + '<ul data-role="listview" data-inset="true" data-split-icon="refresh" data-split-theme="f">';
 					buffer=buffer + '<li data-role="fieldcontain">';
 					buffer=buffer + '<label for="username">Exploitation : </label>';
 					buffer=buffer + '<input type="text" name="username" id="username" value="' + row[1] + '" />';
-					buffer=buffer + '</li><span><a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_rs()"></a></span>';
+					buffer=buffer + '<a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_rs()"></a></li>';
 					buffer=buffer + '<li data-role="fieldcontain">';
 					buffer=buffer + '<label for="nom">Nom : </label>';
 					buffer=buffer + '<input type="text" name="nom" id="username" value="' + row[2] + '" />';
-					buffer=buffer + '</li><span><a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_nom()"></a></span>';
+					buffer=buffer + '<a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_nom()"></a></li>';
 					buffer=buffer + '</ul>';		
 				$('#div_producteur').html(buffer);
 				$('#div_producteur').trigger('create');
