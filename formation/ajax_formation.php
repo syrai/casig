@@ -84,7 +84,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="cha
 {
 		
 	$idcom=connex("SIA","myparam");
-	$requete="UPDATE tcycle SET lieu='".$_POST['lieuformation']."' WHERE id_cycle='".$_POST['idcycle']."'";
+	$requete="UPDATE tcycle SET lieu='".$_POST['lieuformation']."',nom=(lieu || '_' || typeformation || '_' || date1 || '_' || date2) WHERE id_cycle='".$_POST['idcycle']."'";
 	$result=pg_query($idcom,$requete);	
 	pg_close($idcom);
 }
@@ -93,7 +93,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="cha
 {
 		
 	$idcom=connex("SIA","myparam");
-	$requete="UPDATE tcycle SET date1='".$_POST['date1']."',date='".$_POST['date1']."',nom=(typeformation || '_' || lieu || '_' || date1 || '_' || date2)  WHERE id_cycle='".$_POST['idcycle']."'";
+	$requete="UPDATE tcycle SET date1='".$_POST['date1']."',date='".$_POST['date1']."',nom=(lieu || '_' || typeformation || '_' || date1 || '_' || date2)  WHERE id_cycle='".$_POST['idcycle']."'";
 	$result=pg_query($idcom,$requete);	
 	pg_close($idcom);
 }
@@ -102,7 +102,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="cha
 {
 		
 	$idcom=connex("SIA","myparam");
-	$requete="UPDATE tcycle SET date2='".$_POST['date2']."' WHERE id_cycle='".$_POST['idcycle']."'";
+	$requete="UPDATE tcycle SET date2='".$_POST['date2']."',nom=(lieu || '_' || typeformation || '_' || date1 || '_' || date2) WHERE id_cycle='".$_POST['idcycle']."'";
 	$result=pg_query($idcom,$requete);	
 	pg_close($idcom);
 }

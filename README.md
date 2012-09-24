@@ -1,4 +1,6 @@
-casig
+Projet GAMP
+Gestion des abonnés MesParcelles
+Version 1.0
 =====
-Versionnage des versions avec GitHub
-Gestion des abonnées MesParcelles
+#1.0.1
+Amélioration des modifications des informations des abonnés

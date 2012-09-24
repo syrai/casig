@@ -4,11 +4,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>Fiche</title>
-	
-	<link rel="shortcut icon" href="../img/mobile/favicon.png" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"/></script>
-	<script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	<?php
+	include_once("../connexion/version_jq.php");
+	?>
 <link rel="stylesheet" href="../css/cda_1_a.css">
 
 </head>
@@ -19,10 +17,7 @@
 	<div id="div_producteur" data-role="content">
 	
 	</div>
-	<script type="text/javascript">
-	
-	
-	
+	<script type="text/javascript">	
     afficher_fiche_abonne(getUrlParameter('idexploitation'));
 	function afficher_fiche_abonne(producteur)
 	{
@@ -36,21 +31,55 @@
 
 			},
 			success : function(data){
+				localStorage.idexploitation=getUrlParameter('idexploitation')
 				var obj =jQuery.parseJSON(data);
 				var row = obj[0];	
 				
 					buffer='<h3>Modifier ' + row[1] + '</h3>';
-					buffer=buffer + '<table class="table"><tr>';
-					buffer=buffer + '<th>Nom exploitation :</th><td><input type="text" name="username" id="username" value="' + row[1] + '" /></td></tr>';
-					buffer=buffer + '<th>Nom contact :</th><td><input type="text" name="nom" id="nom" value="' + row[2] + '" /></td></tr>';
-					buffer=buffer + '<th>Adresse :</th><td><input type="text" name="adresse" id="adresse" value="' + row[5] + '" /></td></tr>';
-					buffer=buffer + '<th>Tél :</th><td><input type="tel" name="tel" id="tel" value="' + row[3] + '" /></td></tr>';
-					buffer=buffer + '<th>Mail:</th><td><input type="email" name="email" id="email" value="' + row[4] + '" /></td></tr>';
-					buffer=buffer + '</table>';
-					buffer=buffer + '<a href="" id="d" data-role="button"  data-inline="true" data-theme="e">Mettre à jour</a>';
-				buffer=buffer + '</div>';
-				
-				
+					buffer=buffer + '<ul data-role="listview"  data-split-icon="refresh" data-split-theme="d">';
+					buffer=buffer + '<li data-role="fieldcontain">';
+					buffer=buffer + '<a href="">';
+					buffer=buffer + '<p><label for="username">Exploitation : </label>';
+					buffer=buffer + '<input type="text" name="username" id="username" value="' + row[1] + '" /></p></a>';
+					buffer=buffer + '<a href="#"  onclick="modif_rs()"></a>';
+					buffer=buffer + '</li>';
+					buffer=buffer + '<li data-role="fieldcontain">';
+					buffer=buffer + '<a href="">';
+					buffer=buffer + '<p><label for="nom">Nom : </label>';
+					buffer=buffer + '<input type="text" name="nom" id="nom" value="' + row[2] + '" /></p></a>';
+					buffer=buffer + '<a href="#"  onclick="modif_nom()"></a>';
+					buffer=buffer + '</li>';
+					buffer=buffer + '<li data-role="fieldcontain">';
+					buffer=buffer + '<a href="">';
+					buffer=buffer + '<p><label for="adresse">adresse : </label>';
+					buffer=buffer + '<input type="text" name="adresse" id="adresse" value="' + row[5] + '" /></p></a>';
+					buffer=buffer + '<a href="#"  onclick="modif_adresse()"></a>';
+					buffer=buffer + '</li>';
+					buffer=buffer + '<li data-role="fieldcontain">';
+					buffer=buffer + '<a href="">';
+					buffer=buffer + '<p><label for="tel2">Téléphone : </label>';
+					buffer=buffer + '<input type="tel" name="tel2" id="tel2" value="' + row[3] + '" /></p></a>';
+					buffer=buffer + '<a href="#"  onclick="modif_tel()"></a>';
+					buffer=buffer + '</li>';
+					buffer=buffer + '<li data-role="fieldcontain">';
+					buffer=buffer + '<a href="">';
+					buffer=buffer + '<p><label for="emaily">Email : </label>';
+					buffer=buffer + '<input type="text" name="emaily" id="emaily" value="' + row[4] + '" /></p></a>';
+					buffer=buffer + '<a href="#"  onclick="modif_mail()"></a>';
+					buffer=buffer + '</li>';
+					buffer=buffer + '<li data-role="fieldcontain">';
+					buffer=buffer + '<a href="">';
+					buffer=buffer + '<p><label for="identifiant">Identifiant : </label>';
+					buffer=buffer + '<input type="text" name="identifiant" id="identifiant" placeholder="Identifiant..." /></p></a>';
+					buffer=buffer + '<a href="#"  onclick="modif_login()"></a>';
+					buffer=buffer + '</li>';
+					buffer=buffer + '<li data-role="fieldcontain">';
+					buffer=buffer + '<a href="">';
+					buffer=buffer + '<p><label for="passe">Mot de passe : </label>';
+					buffer=buffer + '<input type="text" name="passe" id="passe" placeholder="password..." /></p></a>';
+					buffer=buffer + '<a href="#"  onclick="modif_passe()"></a>';
+					buffer=buffer + '</li>';
+					buffer=buffer + '</ul>';		
 				$('#div_producteur').html(buffer);
 				$('#div_producteur').trigger('create');
 			$('#d').click(function(){
@@ -58,6 +87,95 @@
 										});
 			}
 		});
+	}
+	// Changer le tel
+	function modif_tel(idexploitation){
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_abonne.php',
+			data: {
+				action: 'modif_telephone',
+				tel : $('#tel').val(),
+				idexploitation : localStorage.idexploitation
+			},
+			success : function(data,text){	
+				alert('Numéro de téléphone à jour !');
+			}
+		})
+	}
+	// Changer le mail
+	function modif_mail(idexploitation){
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_abonne.php',
+			data: {
+				action: 'modif_mail',
+				mailto : $('#email').val(),
+				idexploitation : localStorage.idexploitation
+			},
+			success : function(data,text){	
+				alert('Email mis à jour !');
+			}
+		})
+	}
+	// Changer la raison social
+	function modif_rs(idexploitation){
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_abonne.php',
+			data: {
+				action: 'modif_rs',
+				raisonsocial : $('#username').val(),
+				idexploitation : localStorage.idexploitation
+			},
+			success : function(data,text){	
+				alert('Raison social mis à jour !');
+			}
+		})
+	}
+	// Changer le nom
+	function modif_nom(idexploitation){
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_abonne.php',
+			data: {
+				action: 'modif_nom',
+				nom : $('#nom').val(),
+				idexploitation : localStorage.idexploitation
+			},
+			success : function(data,text){	
+				alert('Nom mis à jour !');
+			}
+		})
+	}
+		// Changer le login
+	function modif_login(idexploitation){
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_abonne.php',
+			data: {
+				action: 'modif_identifiant',
+				login : $('#identifiant').val(),
+				idexploitation : localStorage.idexploitation
+			},
+			success : function(data,text){	
+				alert('Identifiant mis à jour !');
+			}
+		})
+	}
+	function modif_passe(idexploitation){
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_abonne.php',
+			data: {
+				action: 'modif_passe',
+				passe : $('#passe').val(),
+				idexploitation : localStorage.idexploitation
+			},
+			success : function(data,text){	
+				alert('Mot de passe mis à jour !');
+			}
+		})
 	}
 	function modification_abonne(idexploitation)
 	{
@@ -69,12 +187,9 @@
 				action : 'modifier_abonne',
 				raisonsocial : $('#username').val(),
 				nom : $('#nom').val(),
-				tel : $('#tel').val(),
-				mailto : $('#email').val(),
 				idexploitation : idexploitation
 			},
 			success : function(data){
-				alert('Modification réussie');
 			}
 		});
 	}

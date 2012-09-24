@@ -52,7 +52,7 @@
 				raisonsociale : $('#valide_recherche').val()
 					},
 			success : function(data){	
-				buffer1='<ul data-role="listview" id="listView" data-filter="true" data-autodividers="true" data-inset="true" data-mini="true" data-filter-placeholder="Chercher un abonne..." data-filter-theme="d" data-theme="d" data-divider-theme="e">';
+				buffer1='<ul data-role="listview" id="listView" data-autodividers="true" data-inset="true" data-mini="true" data-filter-placeholder="Chercher un abonne..." data-filter-theme="d" data-theme="d" data-divider-theme="e">';
 				var obj = jQuery.parseJSON(data);
 				for(i=0;i<obj.length;i++){
 					var tmp=obj[i];

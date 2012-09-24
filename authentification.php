@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +8,9 @@
 	<link rel="stylesheet" href="./css/jqm-docs.css" />
 	<link rel="shortcut icon" href="./img/mobile/favicon.png" />
 	<script src="./js/jqm-docs.js"></script>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-beta.1/jquery.mobile-1.2.0-beta.1.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-rc.1/jquery.mobile-1.2.0-rc.1.min.css" />
 <script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.2.0-beta.1/jquery.mobile-1.2.0-beta.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.2.0-rc.1/jquery.mobile-1.2.0-rc.1.min.js"></script>
 
 	
 </head>
@@ -34,14 +33,16 @@
 			<div data-role="popup" id="popupLogin" data-theme="e"  data-rel="back" class="ui-btn-right">
 			
 				<div style="padding:10px 20px;" >
-				  
+			<fieldset>
+			<legend>Votre identité</legend>
 		          <label for="un" class="ui-hidden-accessible">Username:</label>
-		          <input type="text" name="user" id="un" value="" placeholder="Identifiant" data-theme="c" />
+		          <input type="text" name="user"  id="un" value="" placeholder="Identifiant" data-theme="c" autofocus >
 
 		          <label for="pw" class="ui-hidden-accessible">Password:</label>
-		          <input type="password" name="pass" id="pw" value="" placeholder="Mot de passe" data-theme="c" />
+		          <input type="password" name="pass" id="pw" value="" placeholder="Mot de passe" data-theme="c" required >
 
 		    	  <button type="submit" id="sub2" data-theme="f"  onclick="login()">Connexion</button>
+		    	  </fieldset>
 				</div>
 			
 		

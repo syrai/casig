@@ -1,7 +1,7 @@
 <?php
 //Include de connexion
 include("../connexion/connex.inc.php");
-// Test branche2
+
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="info_abonne")
 	{
 		$idcom=connex("SIA","myparam");
@@ -32,7 +32,8 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="inf
 		}
 	
 		pg_close($idcom);
-	}		
+	}
+	//
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="abonne_historique")
 	{
 		$idcom=connex("SIA","myparam");
@@ -181,19 +182,83 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="mod
 		// Modification de la raison sociale et du nom dans tcartonet
 		
 	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
-	$requete="UPDATE tcartonet SET raison_social='".$_POST['idexploitation']."',nom='".$_POST['idexploitation']."'";
+	$requete="UPDATE tcartonet SET raison_social='".$_POST['raisonsocial']."',nom='".$_POST['nom']."'";
 	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
 	}
-		// Modification des information adresse dans tadressabonne
-		
-	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+		// Modification des informations telephone et mail dans tadressabonne
 	$requete="UPDATE tadresseabonne SET tel='".$_POST['tel']."',mailto='".$_POST['mailto']."'";
+	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+}
+		// Modification des informations téléphone
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modif_telephone")
+{
+	$idcom=connex("SIA","myparam");
+	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$requete="UPDATE tadresseabonne SET tel='".$_POST['tel']."' ";
 	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
 	}
 	$result=pg_query($idcom,$requete);
 	pg_close($idcom);
 }
-
+	// Modification des informations téléphone
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modif_mail")
+{
+	$idcom=connex("SIA","myparam");
+	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$requete="UPDATE tadresseabonne SET mailto='".$_POST['mailto']."' ";
+	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
+	}
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+}
+	// Modification des informations raison sociale
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modif_rs")
+{
+	$idcom=connex("SIA","myparam");
+	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$requete="UPDATE tcartonet SET raison_social='".$_POST['raisonsocial']."'";
+	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
+	}
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+}
+	// Modification des informations nom
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modif_nom")
+{
+	$idcom=connex("SIA","myparam");
+	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$requete="UPDATE tcartonet SET nom='".$_POST['nom']."'";
+	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
+	}
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+}
+	// Modification des informations identifiant
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modif_identifiant")
+{
+	$idcom=connex("SIA","myparam");
+	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$requete="UPDATE tcartonet SET log='".$_POST['login']."'";
+	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
+	}
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+}
+	// Modification des informations password
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modif_passe")
+{
+	$idcom=connex("SIA","myparam");
+	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$requete="UPDATE tcartonet SET passe='".$_POST['passe']."'";
+	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
+	}
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+}
 // Ajouter une valorisation 
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="enregistrer_valorisation")
 {
