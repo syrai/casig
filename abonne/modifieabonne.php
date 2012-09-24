@@ -37,19 +37,17 @@
 				
 					buffer='<h3>Modifier ' + row[1] + '</h3>';
 					buffer=buffer + '<ul data-role="listview" data-inset="true"';
-					buffer=buffer + '<li data-role="fieldcontain"';
+					buffer=buffer + '<li data-role="fieldcontain"'>;
 					buffer=buffer + '<label for="username">Exploitation : </label>';
 					buffer=buffer + '<input type="text" name="username" id="username" value="' + row[1] + '" />';
 					buffer=buffer + '<a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_rs()"></a>';
 					buffer=buffer + '</li>';
-					buffer=buffer + '<li data-role="fieldcontain"';
-					buffer=buffer + '<label for="nom">Exploitation : </label>';
+					buffer=buffer + '<li data-role="fieldcontain"'>;
+					buffer=buffer + '<label for="nom">Nom : </label>';
 					buffer=buffer + '<input type="text" name="nom" id="username" value="' + row[2] + '" />';
-					buffer=buffer + '<a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_rs()"></a>';
+					buffer=buffer + '<a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_nom()"></a>';
 					buffer=buffer + '</li>';
-					buffer=buffer + '</ul>';
-					//buffer=buffer + '<a href="" id="d" data-role="button"  data-inline="true" data-theme="e">Mettre à jour</a>';
-				
+					buffer=buffer + '</ul>';		
 				$('#div_producteur').html(buffer);
 				$('#div_producteur').trigger('create');
 			$('#d').click(function(){
