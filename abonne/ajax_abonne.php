@@ -215,6 +215,50 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="mod
 	$result=pg_query($idcom,$requete);
 	pg_close($idcom);
 }
+	// Modification des informations raison sociale
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modif_rs")
+{
+	$idcom=connex("SIA","myparam");
+	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$requete="UPDATE tcartonet SET raison_social='".$_POST['raisonsocial']."'";
+	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
+	}
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+}
+	// Modification des informations nom
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modif_nom")
+{
+	$idcom=connex("SIA","myparam");
+	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$requete="UPDATE tcartonet SET nom='".$_POST['nom']."'";
+	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
+	}
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+}
+	// Modification des informations identifiant
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modif_identifiant")
+{
+	$idcom=connex("SIA","myparam");
+	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$requete="UPDATE tcartonet SET log='".$_POST['login']."'";
+	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
+	}
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+}
+	// Modification des informations password
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modif_passe")
+{
+	$idcom=connex("SIA","myparam");
+	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$requete="UPDATE tcartonet SET passe='".$_POST['pass']."'";
+	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
+	}
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+}
 // Ajouter une valorisation 
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="enregistrer_valorisation")
 {
