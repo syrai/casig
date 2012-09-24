@@ -92,7 +92,7 @@
 			url: 'ajax_abonne.php',
 			data: {
 				action: 'modif_rs',
-				raisonsocial : $('#username').val()
+				raisonsocial : $('#username').val(),
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
