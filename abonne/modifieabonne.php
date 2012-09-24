@@ -42,8 +42,8 @@
 					buffer=buffer + '<tr><th>Adresse :</th><td><input type="text" name="adresse" id="adresse" value="' + row[5] + '" /></td></tr>';
 					buffer=buffer + '<tr><th>Tél :</th><td><input type="tel" name="tel" id="tel" value="' + row[3] + '" /></td><td><a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_tel()"></a></td></tr>';
 					buffer=buffer + '<tr><th>Mail:</th><td><input type="email" name="email" id="email" value="' + row[4] + '" /></td><td><a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_mail()"></a></td></tr>';
-					buffer=buffer + '<tr><th>Tél :</th><td><input type="text" name="identifiant" id="identifiant" value="" /></td><td><a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_login()"></a></td></tr>';
-					buffer=buffer + '<tr><th>Mail:</th><td><input type="text" name="passe" id="passe" value="" /></td><td><a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_passe()"></a></td></tr>';
+					buffer=buffer + '<tr><th>Identifiant :</th><td><input type="text" name="identifiant" id="identifiant" value="" /></td><td><a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_login()"></a></td></tr>';
+					buffer=buffer + '<tr><th>PassWord :</th><td><input type="text" name="passe" id="passe" value="" /></td><td><a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_passe()"></a></td></tr>';
 					buffer=buffer + '</table>';
 					//buffer=buffer + '<a href="" id="d" data-role="button"  data-inline="true" data-theme="e">Mettre à jour</a>';
 				
@@ -122,7 +122,7 @@
 			url: 'ajax_abonne.php',
 			data: {
 				action: 'modif_identifiant',
-				nom : $('#identifiant').val(),
+				login : $('#identifiant').val(),
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
@@ -136,7 +136,7 @@
 			url: 'ajax_abonne.php',
 			data: {
 				action: 'modif_passe',
-				nom : $('#passe').val(),
+				passe : $('#passe').val(),
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
