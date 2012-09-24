@@ -64,7 +64,7 @@
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
-				alert('Tel changé');
+				alert('Numéro de téléphone à jour !');
 			}
 		})
 	}
@@ -74,12 +74,12 @@
 			type: 'POST',
 			url: 'ajax_abonne.php',
 			data: {
-				action: 'modif_telephone',
+				action: 'modif_mail',
 				mailto : $('#email').val(),
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
-				alert('Tel changé');
+				alert('Email mis à jour !');
 			}
 		})
 	}
