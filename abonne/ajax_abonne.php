@@ -187,12 +187,9 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="mod
 	}
 	$result=pg_query($idcom,$requete);
 	pg_close($idcom);
-		// Modification des information adresse dans tadressabonne
-		
-	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+		// Modification des informations telephone et mail dans tadressabonne
 	$requete="UPDATE tadresseabonne SET tel='".$_POST['tel']."',mailto='".$_POST['mailto']."'";
 	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
-	}
 	$result=pg_query($idcom,$requete);
 	pg_close($idcom);
 }
