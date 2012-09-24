@@ -12,7 +12,7 @@ $requete.="where tcy.id_cycle='".$_GET['idcycle']."'";
 $result=pg_query($idcom,$requete);
  
 // Entêtes des colones dans le fichier Excel
-$excel .="Exploitation;rue;codepostal;commune\n";
+$excel .="Exploitation;rue;codepostal;commune;log;passe\n";
  
 //Les resultats de la requette
 while($row = pg_fetch_array($result)) {
