@@ -69,7 +69,7 @@
 		})
 	}
 	// Changer le mail
-	function modif_tel(idexploitation){
+	function modif_mail(idexploitation){
 		$.ajax({
 			type: 'POST',
 			url: 'ajax_abonne.php',
