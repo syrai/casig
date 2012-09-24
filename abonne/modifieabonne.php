@@ -40,13 +40,13 @@
 					buffer=buffer + '<li data-role="fieldcontain">';
 					buffer=buffer + '<label for="username">Exploitation : </label>';
 					buffer=buffer + '<input type="text" name="username" id="username" value="' + row[1] + '" />';
-					buffer=buffer + '<a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_rs()"></a>';
-					buffer=buffer + '</li>';
+					buffer=buffer + '</li><a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_rs()"></a>';
+					
 					buffer=buffer + '<li data-role="fieldcontain">';
 					buffer=buffer + '<label for="nom">Nom : </label>';
 					buffer=buffer + '<input type="text" name="nom" id="username" value="' + row[2] + '" />';
-					buffer=buffer + '<a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_nom()"></a>';
-					buffer=buffer + '</li>';
+					buffer=buffer + '</li><a href="" data-role="button" data-icon="refresh" data-theme="f" data-iconpos="notext" onclick="modif_nom()"></a>';
+					
 					buffer=buffer + '</ul>';		
 				$('#div_producteur').html(buffer);
 				$('#div_producteur').trigger('create');
