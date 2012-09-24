@@ -198,7 +198,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="mod
 {
 	$idcom=connex("SIA","myparam");
 	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
-	$requete="UPDATE tadresseabonne SET tel='".$_POST['tel']."',mailto='".$_POST['mailto']."'";
+	$requete="UPDATE tadresseabonne SET tel='".$_POST['tel']."' ";
 	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
 	}
 	$result=pg_query($idcom,$requete);
