@@ -72,7 +72,6 @@
 				idexploitation : idexploitation
 			},
 			success : function(data){
-				alert('Modification réussie');
 			}
 		});
 	}
