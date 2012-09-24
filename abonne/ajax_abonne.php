@@ -196,7 +196,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="mod
 	
 	$result=pg_query($idcom,$requete);
 	pg_close($idcom);
-	console.log($requete);
+	echo $requete;
 }
 
 // Ajouter une valorisation 
