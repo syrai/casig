@@ -41,13 +41,13 @@
 					buffer=buffer + '<a href="">';
 					buffer=buffer + '<p><label for="username">Exploitation : </label>';
 					buffer=buffer + '<input type="text" name="username" id="username" value="' + row[1] + '" /></p></a>';
-					buffer=buffer + '<a href="" data-role="button"  onclick="modif_rs()"></a>';
+					buffer=buffer + '<a href="#"  onclick="modif_rs()"></a>';
 					buffer=buffer + '</li>';
 					buffer=buffer + '<li data-role="fieldcontain">';
 					buffer=buffer + '<a href="">';
 					buffer=buffer + '<p><label for="nom">Nom : </label>';
 					buffer=buffer + '<input type="text" name="nom" id="nom" value="' + row[2] + '" /></p></a>';
-					buffer=buffer + '<a href="" data-role="button" onclick="modif_nom()"></a>';
+					buffer=buffer + '<a href="#"  onclick="modif_nom()"></a>';
 					buffer=buffer + '</li>';
 					buffer=buffer + '</ul>';		
 				$('#div_producteur').html(buffer);
