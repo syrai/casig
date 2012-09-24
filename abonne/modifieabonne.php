@@ -39,7 +39,7 @@
 					buffer=buffer + '<th>Nom exploitation :</th><td><input type="text" name="username" id="username" value="' + row[1] + '" /></td></tr>';
 					buffer=buffer + '<tr><th>Nom contact :</th><td><input type="text" name="nom" id="nom" value="' + row[2] + '" /></td></tr>';
 					buffer=buffer + '<tr><th>Adresse :</th><td><input type="text" name="adresse" id="adresse" value="' + row[5] + '" /></td></tr>';
-					buffer=buffer + '<tr><th>Tél :</th><td><input type="tel" name="tel" id="tel" value="' + row[3] + '" /></td><td><a href="" data-role="button" data-icon="refresh" data-iconpos="notext" onclick="modif_tel(getUrlParameter('idexploitation'))"></a></td></tr>';
+					buffer=buffer + '<tr><th>Tél :</th><td><input type="tel" name="tel" id="tel" value="' + row[3] + '" /></td><td><a href="" data-role="button" data-icon="refresh" data-iconpos="notext" onclick="modif_tel(getUrlParameter(idexploitation))"></a></td></tr>';
 					buffer=buffer + '<tr><th>Mail:</th><td><input type="email" name="email" id="email" value="' + row[4] + '" /></td></tr>';
 					buffer=buffer + '</table>';
 					buffer=buffer + '<a href="" id="d" data-role="button"  data-inline="true" data-theme="e">Mettre à jour</a>';
