@@ -17,10 +17,7 @@
 	<div id="div_producteur" data-role="content">
 	
 	</div>
-	<script type="text/javascript">
-	
-	
-	
+	<script type="text/javascript">	
     afficher_fiche_abonne(getUrlParameter('idexploitation'));
 	function afficher_fiche_abonne(producteur)
 	{
@@ -46,8 +43,6 @@
 					buffer=buffer + '<th>Mail:</th><td><input type="email" name="email" id="email" value="' + row[4] + '" /></td></tr>';
 					buffer=buffer + '</table>';
 					buffer=buffer + '<a href="" id="d" data-role="button"  data-inline="true" data-theme="e">Mettre à jour</a>';
-				buffer=buffer + '</div>';
-				
 				
 				$('#div_producteur').html(buffer);
 				$('#div_producteur').trigger('create');
