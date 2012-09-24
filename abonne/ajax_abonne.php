@@ -194,7 +194,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="mod
 	pg_close($idcom);
 }
 		// Modification des informations téléphone
-if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modifier_tel")
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modif_telephone")
 {
 	$idcom=connex("SIA","myparam");
 	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
