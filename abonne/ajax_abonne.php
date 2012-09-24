@@ -193,7 +193,17 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="mod
 	$result=pg_query($idcom,$requete);
 	pg_close($idcom);
 }
-
+		// Modification des informations téléphone
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="modifier_tel")
+{
+	$idcom=connex("SIA","myparam");
+	if(isset($_POST['idexploitation']) && !empty ($_POST['idexploitation'])) {
+	$requete="UPDATE tadresseabonne SET tel='".$_POST['tel']."',mailto='".$_POST['mailto']."'";
+	$requete.=" WHERE idexploitation='".$_POST['idexploitation']."'";
+	}
+	$result=pg_query($idcom,$requete);
+	pg_close($idcom);
+}
 // Ajouter une valorisation 
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="enregistrer_valorisation")
 {
