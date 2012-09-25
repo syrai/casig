@@ -95,7 +95,7 @@
 			url: 'ajax_abonne.php',
 			data: {
 				action: 'modif_telephone',
-				tel : $('#tel').val(),
+				tel : $('#tel2').val(),
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
@@ -110,7 +110,7 @@
 			url: 'ajax_abonne.php',
 			data: {
 				action: 'modif_mail',
-				mailto : $('#email').val(),
+				mailto : $('#emaily').val(),
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
