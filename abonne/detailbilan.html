@@ -11,7 +11,7 @@
 <body>
 <div data-role="header" data-theme="e" data-position="fixed">
 <h1>Bilan détail</h1>
-<a href="/bilan.php" rel="external" data-icon="back" data-iconpos="notext" data-transition="fade" >Précédent</a>
+<a href="./bilan.php" rel="external" data-icon="back" data-iconpos="notext" data-transition="fade" >Précédent</a>
 </div>	
 <div id="detail">	
 </div>
@@ -36,8 +36,8 @@ function afficher_detail(idtypeabonnement){
           }
           
      buffer=buffer + '</ul>';
-      $('#liste').html(buffer);
-  $('#liste').trigger('create');	
+      $('#detail').html(buffer);
+  $('#detail').trigger('create');	
   }
   });
   
@@ -57,5 +57,8 @@ function getUrlParameter(name)
     return false;
 }
 </script>
+<?php
+	include_once("../inc_footer.php/footer_cda.inc.php");
+?>
 </body>
 </html>
