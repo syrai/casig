@@ -28,15 +28,16 @@ function afficher_bilan(){
   },
   success : function(data){
     buffer='<div data-role="collapsible">';
-    
+    buffer=buffer + '<ul data-role="listview" data-theme="d">';
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-      buffer=buffer + '<ul data-role="listview" data-theme="d">';
-       buffer=buffer + '<li>' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></li>';
+       
+       buffer=buffer + '<li data-role="collapsible">' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></li>';
        buffer=buffer + '<li><p>Détail</p></li>';
-       buffer=buffer + '</ul>';
+       
           }
+          buffer=buffer + '</ul>';
           buffer=buffer + '</div>';
      
       $('#liste').html(buffer);
