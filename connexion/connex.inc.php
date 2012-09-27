@@ -10,8 +10,8 @@ function connex($base,$param)
       $idcom    = pg_connect("host=".$hote." port=".$port." dbname=".$base." user=".$user." password= ".$passe) ;
       if (!$idcom)
        {
-       	echo "<script type=text/javascript>";
-       	echo "alert('Connexion Impossible à la base $base ($hote)')</script>";
+       	
+       	alert('Connexion Impossible à la base $base ($hote)');
        }
       return $idcom;
 }
