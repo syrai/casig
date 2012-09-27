@@ -55,7 +55,7 @@ function afficher_bilan(){
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-      buffer=buffer + '<li><a href="./detail_bilan.html?idtypeabonnement=' + tmp[2] + '" rel="external">' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></a></li>';      
+      buffer=buffer + '<li><a href="./detail_bilan.php?idtypeabonnement=' + tmp[2] + '" rel="external">' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></a></li>';      
           }
           
      buffer=buffer + '</ul>';
