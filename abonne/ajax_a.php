@@ -1,6 +1,6 @@
 <?php
 include("../connexion/connex.inc.php");
-
+echo "include("../connexion/connex.inc.php");";
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher")
   {
 	$idcom=connex("SIA","myparam");
