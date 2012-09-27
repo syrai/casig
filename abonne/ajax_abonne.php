@@ -455,4 +455,15 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="ajo
 	pg_close($idcom);
 	
 }
+// Gestion des bilans
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher_le_bilan")
+{
+	
+	$idcom=connex("SIA","myparam");
+	$requete="select libelle,count(idexploitation) as n FROM tfacturation JOIN ttypeabonnement tt USING (idtypeabonnement)  ";
+	$requete.=" WHERE campagne=2013 GROUP BY libelle ORDER BY n desc;"
+	$result=pg_query($idcom,$requete);	
+	pg_close($idcom);
+	
+}
 ?>
