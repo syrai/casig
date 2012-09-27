@@ -1,6 +1,6 @@
 <?php
 //Include de connexion
-include("./gamp_dev/connexion/connex.inc.php");
+include("casig/gamp_dev/connexion/connex.inc.php");
 
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="info_abonne")
 	{
