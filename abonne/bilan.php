@@ -14,7 +14,7 @@
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
 <div id="liste" data-role="content-primary">
-
+<h5>Voir</h5>
 </div>
 <script type="text/javascript">
 afficher_bilan();
@@ -31,7 +31,7 @@ function afficher_bilan(){
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     var tmp=obj[i];
-      buffer=buffer + '<li><a herf="#"' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></a></li>';
+      buffer=buffer + '<li><a href="#"' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></a></li>';
           }
       buffer=buffer + '</ul>';
       $('#liste').html(buffer);
