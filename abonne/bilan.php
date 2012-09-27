@@ -13,11 +13,34 @@
 <h1>Bilan</h1>
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
+<div id="total">
+
+</div>
 <div id="liste">
 
 </div>
 <script type="text/javascript">
+afficher_total();
 afficher_bilan();
+function afficher_total(){
+  $.ajax({
+  type: 'POST',
+  url: 'ajax_a.php',
+  data: {
+    action: 'afficher_total',
+    millesime: '2013'
+  },
+  success : function(data){
+   
+    	var obj = jQuery.parseJSON(data);
+    	var row = obj[0];
+        buffer='<h2>Abonnés : ' + row[0] + '</h2>';
+    	$('#total').html(buffer);
+  	$('#total').trigger('create');	
+  }
+  });
+  
+}
 function afficher_bilan(){
   $.ajax({
   type: 'POST',
