@@ -32,7 +32,7 @@ function afficher_detail(idtypeabonnement){
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-      buffer=buffer + '<li>' + tmp[0] + '/li>';      
+      buffer=buffer + '<li>' + tmp[0] + '</li>';      
           }
           
      buffer=buffer + '</ul>';
