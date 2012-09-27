@@ -17,7 +17,7 @@
 function afficher_bilan()
 </div>
 <script typep="text/javascript">
-function afficher_bilan();
+afficher_bilan();
 function afficher_bilan()
 {
   $.ajax({
