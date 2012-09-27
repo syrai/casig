@@ -28,11 +28,11 @@ function afficher_detail(idtypeabonnement){
   },
   success : function(data){
    
-  buffer='<ul data-role="listview" data-theme="d" data-inset="false" data-mini="true">';
+  buffer='<ul data-role="listview" data-theme="d" data-inset="false" >';
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-      buffer=buffer + '<li>' + tmp[0] + '</li>';      
+      buffer=buffer + '<li  data-mini="true">' + tmp[0] + '</li>';      
           }
           
      buffer=buffer + '</ul>';
