@@ -13,7 +13,7 @@
 <h1>Bilan</h1>
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
-<div id="liste" data-role="collapsible" data-inset="false"  data-theme="f" data-content-theme="d">
+<div id="liste" data-role="collapsible-set" data-inset="false"  data-theme="f" data-content-theme="d">
 
 </div>
 <script type="text/javascript">
