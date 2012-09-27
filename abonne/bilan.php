@@ -13,7 +13,7 @@
 <h1>Bilan</h1>
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
-<div id="liste" data-role="collapsible-set">
+<div id="liste" data-role="collapsible-set" data-inset="false">
 
 </div>
 <script type="text/javascript">
@@ -33,7 +33,7 @@ function afficher_bilan(){
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
         buffer=buffer + '<div data-role="collapsible">';
-        buffer=buffer + '<h3>' + tmp[0] + '</h3><span class="ui-li-count">' + tmp[1] + '</span>';
+        buffer=buffer + '<h3>' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></h3>';
         buffer=buffer + '</div>';
           }
           
