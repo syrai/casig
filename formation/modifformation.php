@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>Modif formation</title>
-	<link rel="stylesheet" href="popup-examples.css" />
+	
 	 <?php
 	include_once("../connexion/version_jq.php");
 	?>

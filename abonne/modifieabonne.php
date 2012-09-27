@@ -89,13 +89,13 @@
 		});
 	}
 	// Changer le tel
-	function modif_tel(idexploitation){
+	function modif_tel(){
 		$.ajax({
 			type: 'POST',
 			url: 'ajax_abonne.php',
 			data: {
 				action: 'modif_telephone',
-				tel : $('#tel').val(),
+				tel : $('#tel2').val(),
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
@@ -104,13 +104,13 @@
 		})
 	}
 	// Changer le mail
-	function modif_mail(idexploitation){
+	function modif_mail(){
 		$.ajax({
 			type: 'POST',
 			url: 'ajax_abonne.php',
 			data: {
 				action: 'modif_mail',
-				mailto : $('#email').val(),
+				mailto : $('#emaily').val(),
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
@@ -119,7 +119,7 @@
 		})
 	}
 	// Changer la raison social
-	function modif_rs(idexploitation){
+	function modif_rs(){
 		$.ajax({
 			type: 'POST',
 			url: 'ajax_abonne.php',
@@ -134,7 +134,7 @@
 		})
 	}
 	// Changer le nom
-	function modif_nom(idexploitation){
+	function modif_nom(){
 		$.ajax({
 			type: 'POST',
 			url: 'ajax_abonne.php',
@@ -149,7 +149,7 @@
 		})
 	}
 		// Changer le login
-	function modif_login(idexploitation){
+	function modif_login(){
 		$.ajax({
 			type: 'POST',
 			url: 'ajax_abonne.php',
@@ -163,7 +163,7 @@
 			}
 		})
 	}
-	function modif_passe(idexploitation){
+	function modif_passe(){
 		$.ajax({
 			type: 'POST',
 			url: 'ajax_abonne.php',

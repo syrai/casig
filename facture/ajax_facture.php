@@ -38,7 +38,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="lis
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="liste_abonnement")
 	{
 		$idcom=connex("SIA","myparam");
-		$requete="SELECT idtypeabonnement,libelle FROM ttypeabonnement";
+		$requete="SELECT idtypeabonnement,libelle FROM ttypeabonnement where disponible='1' and idregroupement='1' ORDER BY libelle";
 		$result=pg_query($idcom,$requete);
 		if(pg_num_rows($result)>0) {
 			$myarray = array();
@@ -53,7 +53,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="lis
 	if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="liste_abonnement2")
 	{
 		$idcom=connex("SIA","myparam");
-		$requete="SELECT idtypeabonnement,libelle FROM ttypeabonnement where idregroupement='1' ORDER BY libelle";
+		$requete="SELECT idtypeabonnement,libelle FROM ttypeabonnement where disponible='1' and idregroupement='1' ORDER BY libelle";
 		$result=pg_query($idcom,$requete);
 		if(pg_num_rows($result)>0) {
 			$myarray = array();
