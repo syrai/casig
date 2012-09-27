@@ -13,9 +13,10 @@
 <h1>Bilan</h1>
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
-<div id="liste">
+<div id="liste" data-role="content-primary">
+
 </div>
-<script typep="text/javascript">
+<script type="text/javascript">
 afficher_bilan();
 function afficher_bilan()
 {
