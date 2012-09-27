@@ -14,7 +14,6 @@
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
 <div id="liste">
-function afficher_bilan()
 </div>
 <script typep="text/javascript">
 afficher_bilan();
@@ -37,7 +36,7 @@ function afficher_bilan()
       $('#liste').html(buffer1);
   		$('#liste').trigger('create');	
   }
-  })
+  });
   
 }
 </script>
