@@ -24,7 +24,7 @@ function afficher_bilan()
   type: 'POST',
   url: 'ajax_a.php',
   data: {
-    action: 'afficher_le_bilan',
+    action: 'afficher',
     millesime: '2013'
   },
   success : function(data){
@@ -35,7 +35,7 @@ function afficher_bilan()
       buffer=buffer + '<li><a herf="#"' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></a></li>';
           }
       buffer=buffer + '</ul>';
-      $('#liste').html(buffer1);
+      $('#liste').html(buffer);
   $('#liste').trigger('create');	
   }
   });
