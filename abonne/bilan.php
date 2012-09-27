@@ -22,7 +22,7 @@ function afficher_bilan()
 {
   $.ajax({
   type: 'POST',
-  url: 'ajax_abonne.php',
+  url: 'ajax_a.php',
   data: {
     action: 'afficher_le_bilan',
     millesime: '2013'
