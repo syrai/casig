@@ -24,18 +24,19 @@ function afficher_bilan()
   type: 'POST',
   url: 'ajax_abonne.php',
   data: {
-    action: 'afficher_le_bilan'
+    action: 'afficher_le_bilan',
+    millesime: '2013'
   },
   success : function(data){
-    buffer='<ul data-role="listview" id="ul_bilan" data-theme="f">';
+    buffer='<ul data-role="listview"  data-theme="f">';
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     var tmp=obj[i];
-      buffer=buffer + '<li>' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></li>';
+      buffer=buffer + '<li><a herf="#"' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></a></li>';
           }
       buffer=buffer + '</ul>';
       $('#liste').html(buffer1);
-  		$('#liste').trigger('create');	
+  $('#liste').trigger('create');	
   }
   });
   
