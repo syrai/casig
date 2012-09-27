@@ -13,7 +13,7 @@
 <h1>Bilan</h1>
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
-<div id="liste" data-role="collapsible-set" data-inset="false"  data-theme="f" data-content-theme="d">
+<div id="liste">
 
 </div>
 <script type="text/javascript">
@@ -27,16 +27,18 @@ function afficher_bilan(){
     millesime: '2013'
   },
   success : function(data){
-  
-    buffer='<ul data-role="listview" data-theme="d">';
+    buffer='<div data-role="collapsible">';
+    
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-      buffer=buffer + '<li  data-role="collapsible" ><a href="#">' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></a></li>';
-      buffer=buffer + '<li><p>Détail</p></li>';
+      buffer=buffer + '<ul data-role="listview" data-theme="d">';
+       buffer=buffer + '<li>' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></li>';
+       buffer=buffer + '<li><p>Détail</p></li>';
+       buffer=buffer + '</ul>';
           }
-          
-     buffer=buffer + '</ul>';
+          buffer=buffer + '</div>';
+     
       $('#liste').html(buffer);
   $('#liste').trigger('create');	
   }
