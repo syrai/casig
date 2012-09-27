@@ -1,18 +1,18 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>Bilan</title>
-=======
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <title>Bilan</title>
->>>>>>> 0191cb260f07ec41af1fa7995f52cd03374c7d72
+
   <?php
   include_once("../connexion/version_jq.php");
 	?>
@@ -22,7 +22,7 @@
 <h1>Bilan</h1>
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
-<<<<<<< HEAD
+
 <div id="total">
 
 </div>
