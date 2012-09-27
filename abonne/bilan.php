@@ -15,9 +15,8 @@
 </div>
 <div id="liste" data-role="content-primary">
 <h5>Voir</h5>
-<ul data-role="listview"  data-theme="f">
-<li>Choix de la campagne</li>
-</ul>
+<ul data-role="listview" data-role="collapsible" data-inset="false"  data-theme="f">
+
 </div>
 <script type="text/javascript">
 afficher_bilan();
@@ -30,14 +29,14 @@ function afficher_bilan(){
     millesime: '2013'
   },
   success : function(data){
-    buffer='<ul data-role="listview" data-role="collapsible" data-inset="false" data-theme="d">';
+    buffer='<ul data-role="listview" data-theme="d">';
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
       buffer=buffer + '<li>' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></li>';
-      
+      buffer=buffer + '<p>Détail</p>';
           }
-          buffer=buffer + '<p>Détail</p>';
+          
      buffer=buffer + '</ul>';
       $('#liste').html(buffer);
   $('#liste').trigger('create');	
