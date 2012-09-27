@@ -30,11 +30,11 @@ function afficher_bilan(){
     millesime: '2013'
   },
   success : function(data){
-    buffer='<ul data-role="listview"  data-theme="d">';
+    buffer='<ul data-role="listview" data-role="collapsible" data-inset="false" data-theme="d">';
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-      buffer=buffer + '<li data-role="collapsible" data-inset="false">' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></li>';
+      buffer=buffer + '<li>' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></li>';
           }
      buffer=buffer + '</ul>';
       $('#liste').html(buffer);
