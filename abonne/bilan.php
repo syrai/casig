@@ -33,10 +33,10 @@ function afficher_bilan(){
     buffer='<ul data-role="listview"  data-theme="f">';
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
-    var tmp=obj[i];
-      buffer=buffer + '<li><a href="#"' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></a></li>';
+    	var tmp=obj[i];
+      buffer=buffer + '<li>' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></li>';
           }
-      buffer=buffer + '</ul>';
+     buffer=buffer + '</ul>';
       $('#liste').html(buffer);
   $('#liste').trigger('create');	
   }
