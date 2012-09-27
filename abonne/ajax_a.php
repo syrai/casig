@@ -37,4 +37,23 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="aff
 	pg_close($idcom);
 
 }
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher_detail")
+  {
+	$idcom=connex("SIA","myparam");
+	$requete="select tc.raison_social  FROM tfacturation JOIN tcartonet tc USING (idexploitation) WHERE tfacturation.idtypeabonnement='".$_POST['idtypeabonnement']."' and campagne=2013 ";
+	$requete.=" ORDER BY raison_social";
+	$result=pg_query($idcom,$requete);
+	if(pg_num_rows($result)>0) {
+			$myarray = array();
+			while ($row = pg_fetch_row($result)) {
+  				$myarray[] = $row;
+			}
+			echo json_encode($myarray);
+		}
+		else {
+			echo json_encode(0);
+		}	
+	pg_close($idcom);
+
+}
 ?>
