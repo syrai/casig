@@ -33,7 +33,7 @@ function afficher_bilan(){
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
         buffer=buffer + '<div data-role="collapsible">';
-        buffer=buffer + '<h3>' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></h3>';
+        buffer=buffer + '<h3>' + tmp[0] + '<span class="ui-count">' + tmp[1] + '</span></h3>';
         buffer=buffer + '</div>';
           }
           
