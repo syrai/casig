@@ -13,7 +13,7 @@
 <h1>Bilan</h1>
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
-<div id="liste" data-role="collapsible-set" data-inset="false">
+<div id="liste">
 
 </div>
 <script type="text/javascript">
@@ -28,16 +28,14 @@ function afficher_bilan(){
   },
   success : function(data){
    
-    buffer='<ul data-role="listview" data-theme="d">';
+  buffer='<ul data-role="listview" data-theme="d" data-inset="false">';
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-        buffer=buffer + '<div data-role="collapsible">';
-        buffer=buffer + '<h3>' + tmp[0] + '<span class="ui-count">' + tmp[1] + '</span></h3>';
-        buffer=buffer + '</div>';
+      buffer=buffer + '<li><a href="#">' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></a></li>';      
           }
           
-     buffer=buffer + '</ul>'
+     buffer=buffer + '</ul>';
       $('#liste').html(buffer);
   $('#liste').trigger('create');	
   }
