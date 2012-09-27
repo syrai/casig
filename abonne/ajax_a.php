@@ -4,9 +4,10 @@ include("../connexion/connex.inc.php");
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher_le_bilan")
   {
 	$idcom=connex("SIA","myparam");
+	echo $idcom;
 	$requete="select libelle,count(idexploitation) as n FROM tfacturation JOIN ttypeabonnement tt USING (idtypeabonnement)  ";
 	$requete.=" WHERE campagne=2013 GROUP BY libelle ORDER BY n desc;"
-	echo $requete;
+	
 	$result=pg_query($idcom,$requete);
 	if(pg_num_rows($result)>0) {
 			$myarray = array();
