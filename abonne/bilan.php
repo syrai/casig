@@ -13,9 +13,7 @@
 <h1>Bilan</h1>
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
-<div id="liste" data-role="content-primary">
-<h5>Voir</h5>
-<ul data-role="listview" data-role="collapsible" data-inset="false"  data-theme="f">
+<div id="liste" data-role="collapsible" data-inset="false"  data-theme="f" data-content-theme="d">
 
 </div>
 <script type="text/javascript">
@@ -29,6 +27,7 @@ function afficher_bilan(){
     millesime: '2013'
   },
   success : function(data){
+  
     buffer='<ul data-role="listview" data-theme="d">';
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
