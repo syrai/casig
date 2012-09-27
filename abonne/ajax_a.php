@@ -1,7 +1,7 @@
 <?php
 include("../connexion/connex.inc.php");
 
-if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher_le_bilan")
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher")
   {
 	$idcom=connex("SIA","myparam");
 	echo $idcom;
