@@ -14,11 +14,12 @@
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
 <div id="liste">
-
+function afficher_bilan()
 </div>
 <script typep="text/javascript">
+function afficher_bilan();
 function afficher_bilan()
-</script>{
+{
   $.ajax({
   type: 'POST',
   url: 'ajax_abonne.php',
@@ -39,5 +40,6 @@ function afficher_bilan()
   })
   
 }
+</script>
 </body>
 </html>
