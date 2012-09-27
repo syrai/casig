@@ -18,8 +18,7 @@
 </div>
 <script type="text/javascript">
 afficher_bilan();
-function afficher_bilan()
-{
+function afficher_bilan(){
   $.ajax({
   type: 'POST',
   url: 'ajax_a.php',
