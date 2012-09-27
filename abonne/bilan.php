@@ -35,7 +35,9 @@ function afficher_bilan(){
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
       buffer=buffer + '<li>' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></li>';
+      
           }
+          buffer=buffer + '<p>Détail</p>';
      buffer=buffer + '</ul>';
       $('#liste').html(buffer);
   $('#liste').trigger('create');	
