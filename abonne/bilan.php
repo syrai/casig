@@ -27,19 +27,17 @@ function afficher_bilan(){
     millesime: '2013'
   },
   success : function(data){
-    buffer='<div data-role="collapsible">';
+   
     buffer=buffer + '<ul data-role="listview" data-theme="d">';
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-       
-       buffer=buffer + '<li data-role="collapsible">' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></li>';
-       buffer=buffer + '<li><p>Détail</p></li>';
-       
+        buffer='<div data-role="collapsible">';
+        buffer=buffer + '<h3>' + tmp[0] + '</h3><span class="ui-li-count">' + tmp[1] + '</span>';
+        buffer=buffer + '</div>';
           }
-          buffer=buffer + '</ul>';
-          buffer=buffer + '</div>';
-     
+          
+     buffer=buffer + '</ul>'
       $('#liste').html(buffer);
   $('#liste').trigger('create');	
   }
