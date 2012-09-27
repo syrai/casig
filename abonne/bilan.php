@@ -15,6 +15,9 @@
 </div>
 <div id="liste" data-role="content-primary">
 <h5>Voir</h5>
+<ul data-role="listview"  data-theme="f">
+<li>Choix de la campagne</li>
+</ul>
 </div>
 <script type="text/javascript">
 afficher_bilan();
