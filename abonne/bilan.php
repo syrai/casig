@@ -32,7 +32,7 @@ function afficher_bilan(){
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-      buffer=buffer + '<li>' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></li>';
+      buffer=buffer + '<li><a href="#">' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></a></li>';
       buffer=buffer + '<li data-role="collapsible" ><p>Détail</p></li>';
           }
           
