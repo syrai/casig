@@ -43,6 +43,7 @@ function afficher_slider(idtypeabonnement){
     	if (row[0]=1) {
     		$('#flip_disponible').val('on').change();
     		$('#flip_disponible').val('on').keyup();
+    		$('#flip_disponible').val('on').slider("refresh");
     	}
         	
   }
