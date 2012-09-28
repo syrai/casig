@@ -41,9 +41,8 @@ function afficher_slider(idtypeabonnement){
     	var obj = jQuery.parseJSON(data);
     	var row = obj[0];
     	if (row[0]='1') {
-    		var myswitch = $("select#flip_disponible");
-    		myswitch[0].selectindex=1;
-    		myswitch.slider("refresh");
+    		$('select#flip_disponible').val('on');
+    		$('select#flip_disponible').slider('refresh');
     		
     	}
         	
