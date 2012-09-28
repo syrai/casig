@@ -41,7 +41,7 @@ function afficher_slider(idtypeabonnement){
     	var obj = jQuery.parseJSON(data);
     	var row = obj[0];
     	if (row[0]='1') {
-    		$('input[type=slider][name=flip_disponible]:selected').attr('on');
+    		$('input[type=slider][name=flip_disponible]:selected').val('on');
     	}
         	
   }
