@@ -42,6 +42,11 @@ function afficher_slider(idtypeabonnement){
     		buffer=buffer + '<option value="on" selected="">Oui</option>';
     		buffer=buffer + '</select>';
     		
+    	} else {
+    	buffer='<select name="flip1" id="flip1" data-role="slider">';
+    		buffer=buffer + '<option value="off" selected="">Non</option>';
+    		buffer=buffer + '<option value="on" >Oui</option>';
+    		buffer=buffer + '</select>';	
     	}
         	$('#liste').html(buffer);
   $('#liste').trigger('create');
