@@ -4,7 +4,7 @@ include("../connexion/connex.inc.php");
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher_liste_abo")
   {
 	$idcom=connex("SIA","myparam");
-	$requete="select libelle || ', ' || tarif ||  as n ,idtypeabonnement FROM  ttypeabonnement tt  ORDER BY libelle desc";
+	$requete="select libelle || ', ' || tarif  as n ,idtypeabonnement FROM  ttypeabonnement tt  ORDER BY libelle desc";
 	$result=pg_query($idcom,$requete);
 	if(pg_num_rows($result)>0) {
 			$myarray = array();
