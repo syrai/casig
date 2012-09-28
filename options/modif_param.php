@@ -40,8 +40,8 @@ function afficher_slider(idtypeabonnement){
    
     	var obj = jQuery.parseJSON(data);
     	var row = obj[0];
-    	if (row[1]=1) {
-    		$('#flip_disponible').val('on');
+    	if (row[0]=1) {
+    		$('#flip_disponible').val('on').slider("refresh");
     	}
         	
   }
