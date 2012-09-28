@@ -13,9 +13,6 @@
 <h1>Paramètrages</h1>
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
-<div id="total">
-
-</div>
 <div id="liste">
 
 </div>
