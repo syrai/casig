@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>Bilan</title>
+	<title>Options</title>
   <?php
   include_once("../connexion/version_jq.php");
 	?>
@@ -20,34 +20,15 @@
 
 </div>
 <script type="text/javascript">
-afficher_total();
-afficher_bilan();
-function afficher_total(){
+
+afficher_abonnement();
+
+function afficher_abonnement(){
   $.ajax({
   type: 'POST',
-  url: 'ajax_a.php',
+  url: 'ajax_options.php',
   data: {
-    action: 'afficher_total',
-    millesime: '2013'
-  },
-  success : function(data){
-   
-    	var obj = jQuery.parseJSON(data);
-    	var row = obj[0];
-        buffer='<h2>Abonnés : ' + row[0] + '</h2>';
-    	$('#total').html(buffer);
-  	$('#total').trigger('create');	
-  }
-  });
-  
-}
-function afficher_bilan(){
-  $.ajax({
-  type: 'POST',
-  url: 'ajax_a.php',
-  data: {
-    action: 'afficher',
-    millesime: '2013'
+    action: 'afficher_liste_abo'
   },
   success : function(data){
    
@@ -55,7 +36,7 @@ function afficher_bilan(){
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-      buffer=buffer + '<li><a href="./detail_bilan.php?idtypeabonnement=' + tmp[2] + '" rel="external">' + tmp[0] + '<span class="ui-li-count">' + tmp[1] + '</span></a></li>';      
+      buffer=buffer + '<li><a href="./param_abo.php?idtypeabonnement=' + tmp[1] + '" rel="external">' + tmp[0] + '</a></li>';      
           }
           
      buffer=buffer + '</ul>';
