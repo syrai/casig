@@ -17,7 +17,11 @@
 
 </div>
 <div id="liste">
-
+<label for="flip-disponible">Abonnement disponible</label>
+<select name="flip-disponible" id="flip-disponible" data-role="slider">
+	<option value="off">Non</option>
+	<option value="on">Oui</option>
+</select> 
 </div>
 <script type="text/javascript">
 // Stockage en base de l'identifiant abonnement
@@ -36,20 +40,12 @@ function afficher_slider(idtypeabonnement){
    
     	var obj = jQuery.parseJSON(data);
     	var row = obj[0];
-    	if (row[0]=1) {
-    		buffer='<select name="flip1" id="flip1" data-role="slider">';
-    		buffer=buffer + '<option value="off">Non</option>';
-    		buffer=buffer + '<option value="on" selected="">Oui</option>';
-    		buffer=buffer + '</select>';
-    		
-    	} else {
-    		buffer='<select name="flip1" id="flip1" data-role="slider">';
-    		buffer=buffer + '<option value="off" selected="">Non</option>';
-    		buffer=buffer + '<option value="on" >Oui</option>';
-    		buffer=buffer + '</select>';	
+    	if (row[0]='1') {
+    		$('#flip_disponible').val('on').change();
+    		$('#flip_disponible').refresh();
+    		alert('gogo'+ row[0]);
     	}
-        	$('#liste').html(buffer);
-  			$('#liste').trigger('create');
+        	
   }
   });
   
