@@ -42,7 +42,7 @@ function afficher_slider(idtypeabonnement){
     	var row = obj[0];
     	if (row[0]='1') {
     		$('select#flip_disponible').val('on').change();
-    		$('select#flip_disponible').val('on').slider('refresh');
+    		$('select#flip_disponible').slider('refresh');
     		
     	}
         	
