@@ -36,20 +36,20 @@ function afficher_slider(idtypeabonnement){
    
     	var obj = jQuery.parseJSON(data);
     	var row = obj[0];
-    	if (row[0]='1') {
+    	if (row[0]=1) {
     		buffer='<select name="flip1" id="flip1" data-role="slider">';
     		buffer=buffer + '<option value="off">Non</option>';
     		buffer=buffer + '<option value="on" selected="">Oui</option>';
     		buffer=buffer + '</select>';
     		
     	} else {
-    	buffer='<select name="flip1" id="flip1" data-role="slider">';
+    		buffer='<select name="flip1" id="flip1" data-role="slider">';
     		buffer=buffer + '<option value="off" selected="">Non</option>';
     		buffer=buffer + '<option value="on" >Oui</option>';
     		buffer=buffer + '</select>';	
     	}
         	$('#liste').html(buffer);
-  $('#liste').trigger('create');
+  			$('#liste').trigger('create');
   }
   });
   
