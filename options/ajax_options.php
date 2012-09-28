@@ -20,7 +20,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="aff
 	
 }
 // Info sur la disponiblilte
-if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher_liste_abo")
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher_slider")
   {
 	$idcom=connex("SIA","myparam");
 	$requete="SELECT disponible FROM  ttypeabonnement tt  WHERE idtypeabonnement='".$_POST['idtypeabonnement']."'";
