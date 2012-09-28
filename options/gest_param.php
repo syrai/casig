@@ -36,7 +36,7 @@ function afficher_abonnement(){
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-      buffer=buffer + '<li><a href="./param_abo.php?idtypeabonnement=' + tmp[1] + '" rel="external">' + tmp[0] + '</a></li>';      
+      buffer=buffer + '<li><a href="./modif_param.php?idtypeabonnement=' + tmp[1] + '" rel="external">' + tmp[0] + '</a></li>';      
           }
           
      buffer=buffer + '</ul>';
