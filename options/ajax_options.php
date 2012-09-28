@@ -23,7 +23,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="aff
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher_slider")
   {
 	$idcom=connex("SIA","myparam");
-	$requete="SELECT disponible FROM  ttypeabonnement tt  WHERE idtypeabonnement='".$_POST['idtypeabonnement']."'";
+	$requete="SELECT disponible,abosecondaire,passagemillesime,idtypepac,libelle,tarif,libellecourt FROM  ttypeabonnement tt  WHERE idtypeabonnement='".$_POST['idtypeabonnement']."'";
 	$result=pg_query($idcom,$requete);
 	if(pg_num_rows($result)>0) {
 			$myarray = array();
@@ -38,4 +38,83 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="aff
 	pg_close($idcom);
 	
 }
+// Afficher les choix pac
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher_liste_pac")
+  {
+	$idcom=connex("SIA","myparam");
+	$requete="SELECT idtypepac,libelle FROM  ttypepac tt";
+	$result=pg_query($idcom,$requete);
+	if(pg_num_rows($result)>0) {
+			$myarray = array();
+			while ($row = pg_fetch_row($result)) {
+  				$myarray[] = $row;
+			}
+			echo json_encode($myarray);
+		}
+		else {
+			echo json_encode(0);
+		}	
+	pg_close($idcom);
+	
+}
+// Afficher les choix pac
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="cocher_pac")
+  {
+	$idcom=connex("SIA","myparam");
+	$requete="SELECT idtypepac,idtypeabonnement FROM ttypeabonnement WHERE idtypeabonnement='".$_POST['idtypeabonnement']."'";
+	$result=pg_query($idcom,$requete);
+	if(pg_num_rows($result)>0) {
+			$myarray = array();
+			while ($row = pg_fetch_row($result)) {
+  				$myarray[] = $row;
+			}
+			echo json_encode($myarray);
+		}
+		else {
+			echo json_encode(0);
+		}	
+	pg_close($idcom);
+	
+}
+// Changer la dispo
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="changer_dispo")
+  {
+	$idcom=connex("SIA","myparam");
+	$requete="UPDATE ttypeabonnement SET disponible='".$_POST['dispo']."' WHERE idtypeabonnement='".$_POST['idtypeabonnement']."'";
+	$result=pg_query($idcom,$requete);
+	
+	pg_close($idcom);
+	
+}
+//changer abonnement secondaire
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="changer_abo_sec")
+  {
+	$idcom=connex("SIA","myparam");
+	$requete="UPDATE ttypeabonnement SET abosecondaire='".$_POST['dispo']."' WHERE idtypeabonnement='".$_POST['idtypeabonnement']."'";
+	$result=pg_query($idcom,$requete);
+	
+	pg_close($idcom);
+	
+}
+// Changer passage du millésime
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="changer_milles")
+  {
+	$idcom=connex("SIA","myparam");
+	$requete="UPDATE ttypeabonnement SET passagemillesime='".$_POST['dispo']."' WHERE idtypeabonnement='".$_POST['idtypeabonnement']."'";
+	$result=pg_query($idcom,$requete);
+	
+	pg_close($idcom);
+	
+}
+// Changer type pac
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="changer_type_pac")
+  {
+	$idcom=connex("SIA","myparam");
+	$requete="UPDATE ttypeabonnement SET idtypepac='".$_POST['dispo']."' WHERE idtypeabonnement='".$_POST['idtypeabonnement']."'";
+	$result=pg_query($idcom,$requete);
+	
+	pg_close($idcom);
+	
+}
+
 ?>
