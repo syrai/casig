@@ -17,11 +17,7 @@
 
 </div>
 <div id="liste">
-<label for="flip-disponible">Abonnement disponible</label>
-<select name="flip-disponible" id="flip-disponible" data-role="slider">
-	<option value="off">Non</option>
-	<option value="on">Oui</option>
-</select> 
+
 </div>
 <script type="text/javascript">
 // Stockage en base de l'identifiant abonnement
@@ -41,9 +37,14 @@ function afficher_slider(idtypeabonnement){
     	var obj = jQuery.parseJSON(data);
     	var row = obj[0];
     	if (row[0]='1') {
-    		$('input[type=slider][name=flip_disponible]:selected').val('on');
+    		buffer='<select name="flip1" id="flip1" data-role="slider">';
+    		buffer=buffer + '<option value="off">Non</option>';
+    		buffer=buffer + '<option value="on" selected="">Oui</option>';
+    		buffer=buffer + '</select>';
+    		
     	}
-        	
+        	$('#liste').html(buffer);
+  $('#liste').trigger('create');
   }
   });
   
