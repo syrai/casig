@@ -65,7 +65,7 @@
 </li>
 <li data-role="fieldcontain">
 <label for="flipdisponible">Abonnement disponible</label>
-<select name="flipdisponible" id="flipdisponible" data-role="slider" ">
+<select name="flipdisponible" id="flipdisponible" data-role="slider">
 	<option value="off">Non</option>
 	<option value="on">Oui</option>
 </select> 

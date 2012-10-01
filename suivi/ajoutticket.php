@@ -6,7 +6,7 @@
 	<title>Tickets</title>
   <?php
   include_once("../connexion/version_jq.php");
-	?>
+ ?>
 </head>
 <body>
 <div data-role="header" data-theme="e" data-position="fixed">
@@ -14,69 +14,59 @@
 <a href="./ticket.php" rel="external" data-icon="back" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
 <div data-role="content">
-	
+	<div class="content-primary">
 <div id="liste">
+<ul data-role="listview" data-theme="d" data-inset="true">
+<li data-role="fieldcontain">
+<label for="exploitation">Qui : </label>
+<input type="text" name="exploitation" id="exploitation" value="" placeholder="Nom de exploitation..." data-mini="true" />
+</li>
+<li data-role="fieldcontain">
+<label for="resume">Sujet : </label>
+<input type="text" name="resume" id="resume" value="" placeholder="Nom de exploitation..." data-mini="true" />
+</li>
+<li data-role="fieldcontain">
+<label for="description">Description : </label>
+<textarea name="description" id="description" value="" placeholder="Description" data-mini="true"></textarea>
+</li>
+<li id="test" data-role="fieldcontain">
 
+</li>
+</ul>
 </div>
-
+</div>
 </div>
 <script type="text/javascript">
-// Stockage en base de l'identifiant abonnement
-localStorage.idticket=getUrlParameter('idticket')
 afficher_suiviticket();
 function afficher_suiviticket(){
   $.ajax({
   type: 'POST',
   url: 'ajax_suivi.php',
   data: {
-    action: 'affiche_type_ticket',
+    action: 'affiche_type_ticket'
   },
-  success : function(data){
-  buffer='<ul data-role="listview" data-theme="d" data-inset="true">';
-  buffer=buffer + '<li>';
-  buffer=buffer + '<label for="exploitation">Qui ? </label>';
-  buffer=buffer + '<input type="text" name="exploitation" id="exploitation" value="" placeholder="Nom de exploitation..." data-mini="true" />';
-   buffer=buffer + '</li>'; 
-  buffer=buffer + '<li>';
-  buffer=buffer + '<label for="resume">Sujet : </label>';
-  buffer=buffer + '<input type="text" name="resume" id="resume" value="" placeholder="Résumé du ticket..." data-mini="true" />';
-   buffer=buffer + '</li>'; 
-  buffer=buffer + '<li>';
-  buffer=buffer + '<label for="description">Description : </label>';
-  buffer=buffer + '<textarea" name="description" id="description" value="" placeholder="Description du ticket..." data-mini="true"></textarea>';
-  var obj = jQuery.parseJSON(data);
-  for(i=0;i<obj.length;i++){
-    var tmp=obj[i];
-      buffer=buffer + '<li>';
-      buffer=buffer + '<input type="radio" name="ch" id="ch' + tmp[0] + '" value="' + tmp[0] + '" class="custom" onclick="changer_tpac()" />';
-	  buffer=buffer + '<label for="ch' + tmp[0] + '">'+ tmp[1] + ' </label>';
-      buffer=buffer + '</li>';      
-          }
-          
-     buffer=buffer + '</ul>';
-      $('#liste').html(buffer);
- 	 $('#liste').trigger('create');	
+  success : function(data){  
+  	buffer2='<div data-role="fieldcontain" >';
+    buffer2=buffer2 + '<fieldset data-role="controlgroup"  >';
+    buffer2=buffer2 + '<h4>Type de suivi</h4>';
+		var obj = jQuery.parseJSON(data);
+		for(i=0;i<obj.length;i++){
+			var tmp=obj[i];
+			buffer2=buffer2 + '<input type="radio" name="ch" id="ch' + tmp[0] + '" value="' + tmp[0] + '" class="custom" />';
+			buffer2=buffer2 + '<label for="ch' + tmp[0] + '">' + tmp[1] + ' </label>';
+			}
+	buffer2=buffer2 + '</fieldset>';
+	buffer2=buffer2 + '</div>';
+	
+		$('#test').html(buffer2);
+		$('#test').trigger('create');
+
   }
   });
-  
 }
 
-function getUrlParameter(name) 
-{
-     var searchString = location.search.substring(1).split('&');
- 
-    for (var i = 0; i < searchString.length; i++) {
- 
-        var parameter = searchString[i].split('=');
-        if(name == parameter[0])    return parameter[1];
- 
-    }
- 
-    return false;
-}
 </script>
-</script>
-	<?php
+<?php
 	include_once("../inc_footer.php/footer_cda.inc.php");
 ?>
 </body>
