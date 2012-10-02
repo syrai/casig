@@ -76,7 +76,7 @@ function fermer_ticket(){
 			data: {
 				action: 'statut_ticket',
 				idticket : localStorage.idticket,
-				idstatutticket : 2
+				idstatutticket : 0
 					},
 			success : function(data){		
 				}
