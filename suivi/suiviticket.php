@@ -12,15 +12,18 @@
 <div data-role="header" data-theme="e" data-position="fixed">
 <h1>Suivi MesParcelles</h1>
 <a href="./ticket.php" rel="external" data-icon="back" data-iconpos="notext" data-transition="fade" >Home</a>
-<a href="./ticket.php" rel="external" data-icon="plus" data-iconpos="notext" data-transition="flip" >Ajouter</a>
+<a href="./ajsuiviticket.php" rel="external" data-role="button"  data-rel="dialog" data-icon="plus" data-iconpos="notext" data-transition="flip" >Ajouter</a>
 </div>
-<div data-role="content">
-	
+
 <div id="liste">
 
 </div>
-
+<div data-role="controlgroup" data-type="horizontal" data-mini="true">
+<a href="" id="d" data-role="button" rel="external" data-rel="back"   data-theme="d" onclick="supprimer_ticket()">Supprimer</a>
+<a href="" id="d2" data-role="button" rel="external" data-rel="back"  data-theme="e" onclick="fermer_ticket()">Fermer</a>
+<a href="" id="d32" data-role="button" rel="external" data-rel="back"  data-theme="f" onclick="reouvrir_ticket()">Réouvrir</a>
 </div>
+
 <script type="text/javascript">
 // Stockage en base de l'identifiant abonnement
 localStorage.idticket=getUrlParameter('idticket')
@@ -35,24 +38,75 @@ function afficher_suiviticket(){
   },
   success : function(data){
    
-  buffer='<ul data-role="listview" data-theme="d" data-inset="true">';
+  buffer='<ul data-role="listview" data-split-icon="delete" data-split-theme="c" data-mini="true">';
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     var tmp=obj[i];
       buffer=buffer + '<li>';
+      buffer=buffer + '<a href="">';
       buffer=buffer + '<h3>' + tmp[0] + '</h3>';
-      buffer=buffer + '<p class="ui-li-aside"><strong>' + tmp[1] + '</strong></p>';
-      buffer=buffer + '</li>';      
+      buffer=buffer + '</a>';
+      buffer=buffer + '<a href="./suiviticket.php?idticket=localStorage.idticket"  rel="external" onclick="supprimer_suiviticket('+ tmp[2] + ')"></a>';
+      buffer=buffer + '</li>'; 
           }
           
      buffer=buffer + '</ul>';
-      $('#liste').html(buffer);
+     $('#liste').html(buffer);
  	 $('#liste').trigger('create');	
   }
   });
   
 }
-
+function supprimer_ticket(){
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_suivi.php',
+			data: {
+				action: 'supp_suiviticket',
+				idticket : localStorage.idticket
+					},
+			success : function(data){		
+				}
+				});
+	}
+function fermer_ticket(){
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_suivi.php',
+			data: {
+				action: 'statut_ticket',
+				idticket : localStorage.idticket,
+				idstatutticket : 2
+					},
+			success : function(data){		
+				}
+				});
+	}
+function reouvrir_ticket(){
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_suivi.php',
+			data: {
+				action: 'statut_ticket',
+				idticket : localStorage.idticket,
+				idstatutticket : 1
+					},
+			success : function(data){		
+				}
+				});
+	}	
+function supprimer_suiviticket(idticketsuivi){
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_suivi.php',
+			data: {
+				action: 'supp_suiviticket2',
+				idticketsuivi : idticketsuivi
+					},
+			success : function(data){		
+				}
+				});
+	}
 function getUrlParameter(name) 
 {
      var searchString = location.search.substring(1).split('&');

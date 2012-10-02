@@ -14,7 +14,7 @@
 <a href="./gest_param.php" rel="external" data-icon="back" data-iconpos="notext" data-transition="fade" >Home</a>
 </div>
 <div data-role="content">
-		<div class="content-primary">
+	
 <div id="liste">
 <ul data-role="listview" data-theme="d" data-inset="true">
 <li data-role="fieldcontain">
@@ -89,7 +89,7 @@
 </li>
 </ul>
 </div>
-</div>
+
 </div>
 <script type="text/javascript">
 // Stockage en base de l'identifiant abonnement

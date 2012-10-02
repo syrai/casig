@@ -30,7 +30,8 @@
 </select>
 
 </div>
-<div id="liste">
+<div id="liste" >
+
 </div>
 </div>
 <script type="text/javascript">
@@ -40,10 +41,11 @@ function afficher_ticket(){
   type: 'POST',
   url: 'ajax_suivi.php',
   data: {
-    action: 'liste_suivi_n'
+    action: 'liste_suivi_n2',
+    idexploitation: getUrlParameter('idexploitation')
   },
   success : function(data){
-  
+   
   buffer='<ul data-role="listview" data-theme="d" data-divider-theme="d" data-inset="true">';
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
@@ -64,7 +66,6 @@ function afficher_ticket(){
   });
   
 }
-
 $('#flipmillesime').change(function(event){
 event.stopPropagation();
 var mys=$(this);
@@ -77,8 +78,9 @@ function changer_millesime(dispo){
   type: 'POST',
   url: 'ajax_suivi.php',
   data: {
-    action: 'liste_suivi_n_slider',
-    dispo: dispo
+    action: 'liste_suivi_n_slider_2',
+    dispo: dispo,
+    idexploitation: getUrlParameter('idexploitation')
   },
   success : function(data){
   	 buffer='<ul data-role="listview" data-theme="d" data-divider-theme="d" data-inset="true">';
@@ -101,7 +103,19 @@ function changer_millesime(dispo){
   }
   });
 }
-
+function getUrlParameter(name) 
+{
+     var searchString = location.search.substring(1).split('&');
+ 
+    for (var i = 0; i < searchString.length; i++) {
+ 
+        var parameter = searchString[i].split('=');
+        if(name == parameter[0])    return parameter[1];
+ 
+    }
+ 
+    return false;
+}
 
 </script>
 	<?php
