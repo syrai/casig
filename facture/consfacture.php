@@ -31,7 +31,7 @@ function afficher_options(){
 			action: 'liste_statut'
 		},
 		success : function(data){
-			
+		
 			buffer= '<ul data-role="listview" data-theme="c" data-inset="true" data-dividertheme="f" >';
 			buffer=buffer + '<li data-role="list-divider">Choix du statut</li>';
 			var obj = jQuery.parseJSON(data);
@@ -62,7 +62,7 @@ function afficher_liste_facture(idstatut)
 				
 				
 				buffer2= '<h4>Listes des factures : </h4>';
-				buffer2=buffer2 + '<ul data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder="Chercher un abonne..." data-filter-theme="d" data-theme="d" data-mini="true" >';
+				buffer2=buffer2 + '<ul data-role="listview" data-filter="true" data-inset="true" data-autodividers="true" data-filter-placeholder="Chercher un abonne..." data-filter-theme="d" data-theme="d" data-mini="true" >';
 				
 				var obj = jQuery.parseJSON(data);
 				for(i=0;i<obj.length;i++){
