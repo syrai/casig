@@ -17,6 +17,7 @@
 	<div id="div_producteur" data-role="content">
 	
 	</div>
+
 	<script type="text/javascript">	
     afficher_fiche_abonne(getUrlParameter('idexploitation'));
 	function afficher_fiche_abonne(producteur)
@@ -99,7 +100,8 @@
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
-				alert('Numéro de téléphone à jour !');
+					jAlert('Numéro de téléphone à jour !', 'GAMP');
+				
 			}
 		})
 	}
@@ -114,7 +116,8 @@
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
-				alert('Email mis à jour !');
+				jAlert('Email mis à jour !', 'GAMP');
+				
 			}
 		})
 	}
@@ -129,7 +132,7 @@
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
-				alert('Raison social mis à jour !');
+				jAlert('Raison social mis à jour !','GAMP');
 			}
 		})
 	}
@@ -144,7 +147,7 @@
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
-				alert('Nom mis à jour !');
+				jAlert('Nom mis à jour !','GAMP');
 			}
 		})
 	}
@@ -159,7 +162,7 @@
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
-				alert('Identifiant mis à jour !');
+				jAlert('Identifiant mis à jour !','GAMP');
 			}
 		})
 	}
@@ -173,7 +176,7 @@
 				idexploitation : localStorage.idexploitation
 			},
 			success : function(data,text){	
-				alert('Mot de passe mis à jour !');
+				jAlert('Mot de passe mis à jour !','GAMP');
 			}
 		})
 	}

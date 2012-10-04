@@ -15,7 +15,15 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="ajo
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="liste_type_formation")
 	{
 		$idcom=connex("SIA","myparam");
-		$requete="select tcy.id_cycle,tcy.nom as formation,count(tf.idexploitation) as n  from tcycle tcy  ";
+		$requete="select tcy.id_cycle,";
+		if ($_POST['type']!='JI'){
+			
+			$requete.="(lieu || ' le ' || date1)";
+		} ELSE {
+			$requete.="(lieu || ' les ' || date1 || ' et ' || date2) ";
+		}
+		$requete.="  as formation";
+		$requete.=",count(tf.idexploitation) as n  from tcycle tcy  ";
 		$requete.="LEFT JOIN tformation tf USING (id_cycle) LEFT JOIN tcartonet tc ON tc.idexploitation=tf.idexploitation LEFT JOIN tadresseabonne ta ON ta.idexploitation=tf.idexploitation ";
 		$requete.="where tcy.date ";
 		
@@ -34,8 +42,9 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="lis
 			$requete.="='JI' ";
 		}
 		
-		$requete.=" GROUP BY tcy.id_cycle,tcy.nom,tcy.date ORDER BY tcy.nom,tcy.date desc";
+		$requete.=" GROUP BY tcy.id_cycle,tcy.nom,tcy.date,tcy.lieu,tcy.date1,tcy.date2  ORDER BY tcy.lieu,tcy.date ";
 		$result=pg_query($idcom,$requete);
+	
 		if(pg_num_rows($result)>0) {
 			$myarray = array();
 			while ($row = pg_fetch_row($result)) {
