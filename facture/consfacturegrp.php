@@ -13,12 +13,14 @@
 <?php
 	include_once("./inc_facture/header_facture.inc.php");
 ?>
-
-<div id="div_choix_option" data-role="content">
+<style type="text/css" media="screen">
+			.containing-element .ui-slider-switch { width: 15em;}
+</style>
+<div id="div_choix_option" data-role="collapsible-set" data-theme="b" data-content-theme="f">
 	
 </div>
 <div id="div_resultat" data-role="content">
-	
+
 </div>
 
 <script type="text/javascript">
@@ -73,25 +75,26 @@ function afficher_liste_facture(idstatut)
 				buffer2=buffer2 + '</fieldset>';
 				buffer2=buffer2 + '</div>';
 				buffer2=buffer2 +'<div data-role="fieldcontain" id="r">';
-		buffer2=buffer2 + '<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" id="f1">';		
+		buffer2=buffer2 + '<fieldset data-role="controlgroup" data-type="horizontal"  id="f1">';		
 		buffer2=buffer2 + '<input type="radio" name="radio-view" id="radio-view-a" value="1"   />';
 		buffer2=buffer2 + '<label for="radio-view-a">En Attente</label>';
 		buffer2=buffer2 + '<input type="radio" name="radio-view" id="radio-view-b" value="2"  />';
 		buffer2=buffer2 + '<label for="radio-view-b">Traitée</label>';
+		buffer2=buffer2 + '<input type="radio" name="radio-view" id="radio-view-c" value="5"  />';
+		buffer2=buffer2 + '<label for="radio-view-c">Erreur</label>';
 		buffer2=buffer2 + '</fieldset>';
-		buffer2=buffer2 + '</div>';
-				buffer2= buffer2 +'<input type="submit" name="modelos" data-inline="true" id="modelos" value="Rechercher">​';
-				$('#div_resultat').html(buffer2);
-				$('#div_resultat').trigger('create');
+		buffer2=buffer2 + '</div>';		
+		$('#div_resultat').html(buffer2);
+		$('#div_resultat').trigger('create');
 					// Définit l'evenement
-		$('#modelos').click(function(){
+		$('#r').change(function(){
 		$('input[type=checkbox][name=ch]:checked').each(function(){
 			
 			afficher_resultat_recherche($(this).val());
 			
 		})
-			
 		});
+		
 	
 			}
 		});
@@ -112,6 +115,7 @@ function afficher_resultat_recherche(idep){
 			}
 		})
 	}	
+
 				
 </script>
 <?php

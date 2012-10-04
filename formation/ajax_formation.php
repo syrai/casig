@@ -26,7 +26,15 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="lis
 			$requete.=">= ";
 		}
 		
-		$requete.="Now() GROUP BY tcy.id_cycle,tcy.nom,tcy.date ORDER BY tcy.nom,tcy.date desc";
+		$requete.="Now() AND typeformation";
+		if ($_POST['type']!='JI'){
+			
+			$requete.="!='JI'";
+		} ELSE {
+			$requete.="='JI' ";
+		}
+		
+		$requete.=" GROUP BY tcy.id_cycle,tcy.nom,tcy.date ORDER BY tcy.nom,tcy.date desc";
 		$result=pg_query($idcom,$requete);
 		if(pg_num_rows($result)>0) {
 			$myarray = array();

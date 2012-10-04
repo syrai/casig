@@ -16,12 +16,7 @@
 </div>
 <div data-role="content">
 <style type="text/css" media="screen">
-			.containing-element .ui-slider-switch { 
-			position: relative; 
-			margin-left: auto;
-  			margin-right: auto;
-			width: 10em;
-			}
+			.containing-element .ui-slider-switch { width: 18em;}
 </style>
 <div id="liste2" class="containing-element"  >
 <select name="flipmillesime" id="flipmillesime" data-role="slider">

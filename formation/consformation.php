@@ -28,35 +28,44 @@
 	<script type="text/javascript">
 	affichage_bt_radio();
 	function affichage_bt_radio(){
-		buffer='<div data-role="fieldcontain" id="r">';
+		buffer='<div data-role="fieldcontain" id="r" >';
 		buffer=buffer + '<fieldset data-role="controlgroup" data-type="horizontal" id="f1">';
 	
-		buffer=buffer + '<input type="radio" name="radio-view" id="radio-view-a" value="avant"  />';
+		buffer=buffer + '<input type="radio" name="radio-view" id="radio-view-a"  value="avant"  />';
 		buffer=buffer + '<label for="radio-view-a">Avant</label>';
 		buffer=buffer + '<input type="radio" name="radio-view" id="radio-view-b" value="apres"  />';
 		buffer=buffer + '<label for="radio-view-b">Après</label>';
 		buffer=buffer + '</fieldset>';
 		buffer=buffer + '</div>';
+		buffer=buffer + '<div data-role="fieldcontain" id="rr">';
+		buffer=buffer + '<fieldset data-role="controlgroup" data-type="horizontal" id="f2">';
+		buffer=buffer + '<input type="radio" name="radio-viewr" id="radio-viewr-a" value="JI"  />';
+		buffer=buffer + '<label for="radio-viewr-a">Initiales</label>';
+		buffer=buffer + '<input type="radio" name="radio-viewr" id="radio-viewr-b" value="Autres"  />';
+		buffer=buffer + '<label for="radio-viewr-b">Perfectionnement</label>';
+		buffer=buffer + '</fieldset>';
+		buffer=buffer + '</div>';
 		$('#div_r').html(buffer);
 		$('#div_r').trigger('create');
 		// Evenemet
-		$('#r').change(function(){
-					affichage_liste_abonnement($('input[type=radio][name=radio-view]:checked').attr('value'));
+		$('#rr').change(function(){
+					affichage_liste_abonnement($('input[type=radio][name=radio-view]:checked').attr('value'),$('input[type=radio][name=radio-viewr]:checked').attr('value'));
 										});
 	}
 	//Affichage de la liste déroulante des types d'abonnement
 	
 	
-	function affichage_liste_abonnement(quand){
+	function affichage_liste_abonnement(quand,type){
 		$.ajax({
 			type: 'POST',
 			url: 'ajax_formation.php',
 			data: {
 				action: 'liste_type_formation',
-				quand : quand
+				quand : quand,
+				type: type
 					},
 			success : function(data){	
-				buffer='<ul data-role="listview" data-autodividers="true" >';
+				buffer='<ul data-role="listview" data-autodividers="true" data-divider-theme="f" >';
 				var obj = jQuery.parseJSON(data);
 				for(i=0;i<obj.length;i++){
 					var tmp=obj[i];
