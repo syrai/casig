@@ -4,23 +4,23 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>Factures</title>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"/></script>
-	<script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	<?php
+  include_once("../connexion/version_jq.php");
+	?>
 
 </head>
 <body>	
 <?php
 	include_once("./inc_facture/header_facture.inc.php");
 ?>
-
-<div id="div_choix_option" data-role="content">
+<div data-role="content">
+<div id="div_choix_option" data-role="content-secondary">
 	
 </div>
-<div id="div_resultat" data-role="content">
+<div id="div_resultat" data-role="content-primary">
 	
 </div>
-
+</div>
 <script type="text/javascript">
 afficher_options();
 function afficher_options(){
@@ -31,7 +31,7 @@ function afficher_options(){
 			action: 'liste_statut'
 		},
 		success : function(data){
-			
+		
 			buffer= '<ul data-role="listview" data-theme="c" data-inset="true" data-dividertheme="f" >';
 			buffer=buffer + '<li data-role="list-divider">Choix du statut</li>';
 			var obj = jQuery.parseJSON(data);
@@ -62,8 +62,7 @@ function afficher_liste_facture(idstatut)
 				
 				
 				buffer2= '<h4>Listes des factures : </h4>';
-				buffer2=buffer2 + '<ul data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder="Chercher un abonne..." data-filter-theme="d" data-theme="d" data-mini="true" >';
-				
+				buffer2=buffer2 + '<ul data-role="listview" data-filter="true" data-inset="true" data-autodividers="true" data-mini="true"data-filter-placeholder="Chercher un abonne..." data-filter-theme="d" data-theme="d" data-dividertheme="f"  data-mini="true" >';
 				var obj = jQuery.parseJSON(data);
 				for(i=0;i<obj.length;i++){
 				var tmp=obj[i];
