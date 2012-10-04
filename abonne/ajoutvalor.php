@@ -16,7 +16,7 @@
 	include_once("./inc_abonne/header_abonne.inc.php");
 	?>	
 	<div id="div_producteur" data-role="content">
-	<input type="search" id="valide_recherche" name="valide_recherche" placeholder="En maj" value="" onchange="afficher_resultat_recherche()"/>
+	<input type="search" id="valide_recherche" name="valide_recherche" placeholder="Exploitations" value="" onchange="afficher_resultat_recherche()"/>
 	</div>
 	<div id="div_lsite" data-role="content">
 	
@@ -38,11 +38,11 @@
 	
 		$.ajax({
 			type: 'POST',
-			url: 'producteur.php',
+			url: 'ajax_abonne.php',
 			datatype: 'json',
 			data: {
-				action: 'lancer_recherche',
-				producteur : $('#valide_recherche').val()
+				action: 'liste_abonne2',
+				raisonsociale : $('#valide_recherche').val()
 			},
 			success : function(data){
 				buffer2='<div data-role="fieldcontain" id="a">';
@@ -52,10 +52,10 @@
 				for(i=0;i<obj.length;i++){
 					var tmp=obj[i];
 					
-					buffer2=buffer2 + '<li data-role="list-divider">' + tmp[2] + '</li>';
+					buffer2=buffer2 + '<li data-role="list-divider">' + tmp[0] + '</li>';
 					buffer2=buffer2 + '<li><h3>' + tmp[1] + '</h3>';
-					buffer2=buffer2 + '<p>' + tmp[3] + '</p></li>';
-					buffer2=buffer2 + '<li><a href="#" data-role="button"  onclick="enregister_identifiant(' + tmp[0] + ')">Choisir</a></li>';
+					buffer2=buffer2 + '<p>' + tmp[2] + '</p></li>';
+					buffer2=buffer2 + '<li><a href="#" data-role="button" date-inline="true"  onclick="enregister_identifiant(' + tmp[0] + ')">Choisir</a></li>';
 				} 
 				buffer2=buffer2 + '</ul>';
 				buffer2=buffer2 + '</div>';

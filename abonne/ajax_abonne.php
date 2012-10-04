@@ -323,7 +323,9 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="lis
 		if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="liste_abonne2")
 	{
 		$idcom=connex("SIA","myparam");
-		$requete="select  idexploitation,raison_social || ' ' || tt.libelle as rdv  from tcartonet JOIN ttypeabonnement tt USING (idtypeabonnement) ";
+		$requete="select  idexploitation,raison_social || ' ' || tt.libelle as rdv ,adresse || ' ' || codepostal || ' à ' || commune as adresse ";
+		$requete.=" from tcartonet JOIN tadresseabonne USING (idexploitation)";
+		$requete.=" JOIN ttypeabonnement tt USING (idtypeabonnement) ";
 		$requete.=" WHERE tcartonet.raison_social like upper('%".$_POST['raisonsociale']."%') ORDER BY raison_social ";
 
 		$result=pg_query($idcom,$requete);
