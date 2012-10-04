@@ -25,6 +25,9 @@
 <div id="div_liste" data-role="content">
 
 </div>
+<!-- Core files -->
+		<script src="../jqueryalert/jquery.alerts.js" type="text/javascript"></script>
+		<link href="../jqueryalert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
 	<script type="text/javascript">
 	affichage_bt_radio();
 	function affichage_bt_radio(){
