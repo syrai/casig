@@ -116,5 +116,54 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="cha
 	pg_close($idcom);
 	
 }
+// Afficher les choix de millésime
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher_liste_millesime")
+  {
+	$idcom=connex("SIA","myparam");
+	$requete="SELECT id_millesime,millesime FROM  tmillesime where millesime is not null ORDER BY millesime desc limit 4";
+	$result=pg_query($idcom,$requete);
+	if(pg_num_rows($result)>0) {
+			$myarray = array();
+			while ($row = pg_fetch_row($result)) {
+  				$myarray[] = $row;
+			}
+			echo json_encode($myarray);
+		}
+		else {
+			echo json_encode(0);
+		}	
+	pg_close($idcom);
+	
+}
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="cocher_millesime")
+  {
+	$idcom=connex("SIA","myparam");
+	$requete="SELECT id_millesime,millesime FROM tmillesime WHERE courant='1'";
+	$result=pg_query($idcom,$requete);
+	if(pg_num_rows($result)>0) {
+			$myarray = array();
+			while ($row = pg_fetch_row($result)) {
+  				$myarray[] = $row;
+			}
+			echo json_encode($myarray);
+		}
+		else {
+			echo json_encode(0);
+		}	
+	pg_close($idcom);
+	
+}
+// Changer millésime courant
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="changer_millesime")
+  {
+	$idcom=connex("SIA","myparam");
+	$requete="UPDATE tmillesime SET courant='1' WHERE id_millesime='".$_POST['idmillesime']."'";
+	$result=pg_query($idcom,$requete);
+		
+	$requete="UPDATE tmillesime SET courant='0' WHERE id_millesime<>'".$_POST['idmillesime']."'";
+	$result=pg_query($idcom,$requete);
 
+	pg_close($idcom);
+	
+}
 ?>

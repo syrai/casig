@@ -14,6 +14,9 @@
 	include_once("./inc_facture/header_facture.inc.php");
 ?>
 <div data-role="content">
+<div id="mil" data-role="content-secondary">
+
+</div>
 <div id="div_choix_option" data-role="content-secondary">
 	
 </div>
@@ -22,7 +25,26 @@
 </div>
 </div>
 <script type="text/javascript">
+chercher_millesime();
 afficher_options();
+
+chercher_millesime();
+function chercher_millesime(){
+	$.ajax({
+  type: 'POST',
+  url: 'ajax_facture.php',
+  data: {
+    action: 'cocher_millesime'
+  },
+  success : function(data){
+  	var obj = jQuery.parseJSON(data);
+    var row = obj[0];
+  	buffer='<h4>Millésime courant : '+ row[1] + '</h4>';
+  	$('#mil').html(buffer);
+	$('#mil').trigger('create');
+  }
+  });
+}
 function afficher_options(){
 	$.ajax({
 		type: 'POST',

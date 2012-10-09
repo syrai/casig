@@ -441,6 +441,22 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="ajo
 	$result=pg_query($idcom,$requete);	
 	pg_close($idcom);
 }
+		// suppression facture 
+if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="supprimer_fact_abonne")
+{
+	// reglement  Facture
+		$idcom=connex("SIA","myparam");
+		$requete="delete FROM treglementfacture WHERE   ";
+		$requete.=" idtfacturation='".$_POST['campa']."')";
+		$result=pg_query($idcom,$requete);
+	
+		// Suppression dans lta table tfacturation
+		$requete="DELETE FROM tfacturation WHERE ";
+		$requete.="idtfacturation='".$_POST['campa']."'";
+		$result=pg_query($idcom,$requete);	
+	    pg_close($idcom);
+
+}
 // Ajout d'un parrainage
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="ajouter_par_abonne")
 {

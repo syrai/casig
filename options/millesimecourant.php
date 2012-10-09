@@ -1,61 +1,81 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Home</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">	
-	<link rel="stylesheet" href="http://sd-22074.dedibox.fr/casig/gamp/css/section_mobile.css" type="text/css" media="screen">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"/></script>
-	<script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Options</title>
+  <?php
+  include_once("../connexion/version_jq.php");
+	?>
 </head>
 <body>
-	<script>
-        function onSuccess(data, status)
-        {
-            data = $.trim(data);
-            $("#notification").text(data);
-        }
+<div data-role="header" data-theme="f" data-position="fixed">
+<h1>Millésime</h1>
+<a href="../facture/consfacture.php" rel="external" data-icon="back" data-iconpos="notext" data-transition="flip" >Home</a>
+</div>
+<div id="test">
+
+</div>
+<script type="text/javascript">
+
+afficher_millesime();
+function afficher_millesime(){
+	$.ajax({
+  type: 'POST',
+  url: 'ajax_options.php',
+  data: {
+    action: 'afficher_liste_millesime'
+  },
+  success : function(data){	
+	buffer2='<div data-role="fieldcontain" >';
+    buffer2=buffer2 + '<fieldset data-role="controlgroup"  >';
+    buffer2=buffer2 + '<h4>Millésime</h4>';
+		var obj = jQuery.parseJSON(data);
+		for(i=0;i<obj.length;i++){
+			var tmp=obj[i];
+			buffer2=buffer2 + '<input type="radio" name="ch" id="ch' + tmp[0] + '" value="' + tmp[0] + '" class="custom" onclick="changer_tpac()" />';
+			buffer2=buffer2 + '<label for="ch' + tmp[0] + '">'+ tmp[1] + ' </label>';
+			}
+		buffer2=buffer2 + '</fieldset>';
+		buffer2=buffer2 + '</div>';
+		$('#test').html(buffer2);
+		$('#test').trigger('create');
+		cocher_case_pac();
+   }
+  });
+}
+function cocher_case_pac(){
+	$.ajax({
+  type: 'POST',
+  url: 'ajax_options.php',
+  data: {
+    action: 'cocher_millesime',
+  },
+  success : function(data){	
+	var obj = jQuery.parseJSON(data);
+    var row = obj[0];
+    $('input[type=radio][name=ch][id=ch' + row[0] + ']').attr("checked",true).checkboxradio("refresh");
  
-        function onError(data, status)
-        {
-            // handle an error
-        }        
- 
-        $(document).ready(function() {
-            $("#submit").click(function(){
- 
-                var formData = $("#callAjaxForm").serialize();
- 
-                $.ajax({
-                    type: "POST",
-                    url: "changementmillesime.php",
-                    cache: false,
-                    data: formData,
-                    success: onSuccess,
-                    error: onError
-                });
- 
-                return false;
-            });
-        });
-    </script>
-<div data-role="page" id="callAjaxPage">
-	
-	<div class="home_tagline">Fixer le millésime courant</div>
-	<div data-role="content">
-						<form class="login_form" id="callAjaxForm" >			
-							<input class="wrapped_input login_email" type="text" name="millesime" id="millesime" value="" placeholder="millesime" />							
-							<div class="cta_button_wrapper">
-								<h3 id="notification"></h3>
-								<input class="button login_submit" type="submit" value="Fixer le millésime" name="login_submit" />
-							</div>
-							<input type="hidden" name="__login" value="Login" />
-						</form>
-				</div>
-			</div>
-	</div><!-- content -->
-</div><!-- Page -->
+   }
+  });
+}
+ function changer_tpac(){
+	$.ajax({
+  type: 'POST',
+  url: 'ajax_options.php',
+  data: {
+    action: 'changer_millesime',
+    idmillesime: $('input[type=radio][name=ch]:checked').attr('value'),
+    
+  },
+  success : function(data){
+  	jAlert('Millésime courant changé !', 'GAMP');
+  }
+  });
+} 
+</script>
+	<?php
+	include_once("../inc_footer.php/footer_cda.inc.php");
+?>
 </body>
 </html>

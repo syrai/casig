@@ -12,6 +12,7 @@
 <div data-role="header" data-theme="e" data-position="fixed">
 <h1>Paramètrages</h1>
 <a href="../h.php" rel="external" data-icon="home" data-iconpos="notext" data-transition="fade" >Home</a>
+<a href="./millesimecourant.php" rel="external" data-icon="check" data-iconpos="notext" data-transition="fade" >Millésime</a>
 </div>
 <div id="liste">
 

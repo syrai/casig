@@ -16,6 +16,9 @@
 <style type="text/css" media="screen">
 			.containing-element .ui-slider-switch { width: 15em;}
 </style>
+<div id="mil" data-role="content-secondary">
+
+</div>
 <div id="div_choix_option" data-role="collapsible-set" data-theme="b" data-content-theme="f">
 	
 </div>
@@ -24,7 +27,27 @@
 </div>
 
 <script type="text/javascript">
+
+chercher_millesime();
 afficher_options();
+
+chercher_millesime();
+function chercher_millesime(){
+	$.ajax({
+  type: 'POST',
+  url: 'ajax_facture.php',
+  data: {
+    action: 'cocher_millesime'
+  },
+  success : function(data){
+  	var obj = jQuery.parseJSON(data);
+    var row = obj[0];
+  	buffer='<h4>Millésime courant : '+ row[1] + '</h4>';
+  	$('#mil').html(buffer);
+	$('#mil').trigger('create');
+  }
+  });
+}
 function afficher_options(){
 	$.ajax({
 		type: 'POST',

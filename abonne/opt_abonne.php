@@ -128,6 +128,22 @@
 			}
 		});
 	}
+	function supprimer_la_facture()
+	{
+		$.ajax({
+			type: 'POST',
+			url: 'ajax_abonne.php',
+			datatype: 'json',
+			async: false,
+			data: {
+				action : 'supprimer_fact_abonne',
+				campa : $('input[type=radio][name=radio-view]:checked').attr('value')
+			},
+			success : function(data){
+			
+			}
+		});
+	}
 	</script>
 
 </body>

@@ -265,4 +265,22 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="bil
 		
 		pg_close($idcom);
 	}
+	if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="cocher_millesime")
+  {
+	$idcom=connex("SIA","myparam");
+	$requete="SELECT id_millesime,millesime FROM tmillesime WHERE courant='1'";
+	$result=pg_query($idcom,$requete);
+	if(pg_num_rows($result)>0) {
+			$myarray = array();
+			while ($row = pg_fetch_row($result)) {
+  				$myarray[] = $row;
+			}
+			echo json_encode($myarray);
+		}
+		else {
+			echo json_encode(0);
+		}	
+	pg_close($idcom);
+	
+}
 ?>
