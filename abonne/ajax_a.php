@@ -22,7 +22,7 @@ if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="aff
 if(isset($_POST['action']) && !empty($_POST['action']) && $_POST['action']=="afficher_total")
   {
 	$idcom=connex("SIA","myparam");
-	$requete="select count(idexploitation) as n FROM tfacturation JOIN ttypeabonnement tt USING (idtypeabonnement) WHERE campagne=2013 ";
+	$requete="select count(idexploitation) as n FROM tfacturation JOIN ttypeabonnement tt USING (idtypeabonnement) WHERE tt.compte='1' AND campagne=2013 ";
 	$result=pg_query($idcom,$requete);
 	if(pg_num_rows($result)>0) {
 			$myarray = array();
