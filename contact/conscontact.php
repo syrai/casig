@@ -4,22 +4,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>Consultation</title>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"/></script>
-	<script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-	 
+	<?php
+	include_once("../connexion/version_jq.php");
+	?>
 </head>
 <body>	
-<script type="text/javascript">
-
-</script>
 	<?php
 	include_once("./inc_contact/header_contact.inc.php");
 	?>	
 <div data-role="page=" id="conscon">
 	<div data-role="content">
-     		<div class="content">	
-				<ul data-role="listview" id="listView" data-filter="true" data-inset="true" data-filter-placeholder="Chercher un exploitant..." data-filter-theme="d" data-theme="d" data-divider-theme="e">
+				<ul data-role="listview" id="listView" data-autodividers="true" data-filter="true" data-inset="true" data-filter-placeholder="Chercher un exploitant..." data-filter-theme="d" data-theme="d" data-divider-theme="e">
 	<?php
 	
 		include("../connexion/connex.inc.php");
