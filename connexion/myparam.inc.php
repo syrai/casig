@@ -1,5 +1,5 @@
 <?php
-define("PGHOST","88.191.124.79");
+define("PGHOST","0.");
 define("PGUSER","postgres");
 define("PGPASS","postgres");
 define("PGPORT","5432");
