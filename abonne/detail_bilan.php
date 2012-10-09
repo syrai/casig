@@ -32,7 +32,7 @@ function afficher_detail(idtypeabonnement){
     var obj = jQuery.parseJSON(data);
     for(i=0;i<obj.length;i++){
     	var tmp=obj[i];
-      buffer=buffer + '<li  data-mini="true">' + tmp[0] + '</li>';      
+      buffer=buffer + '<li data-mini="true"><a href="./ficheabonnes.php?idexploitation=' + tmp[0] + '" rel="external">' + tmp[1] + '</a></li>';      
           }
           
      buffer=buffer + '</ul>';
