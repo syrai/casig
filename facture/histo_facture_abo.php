@@ -46,9 +46,9 @@
 					buffer=buffer + '<td>Date modification :</td><td>' + tmp[5] + '</td></tr>';
 					buffer=buffer + '</table>';
 					buffer=buffer + '<div data-role="controlgroup" data-type="horizontal">';
-					buffer=buffer + '<a href="modifstatut.php?idtfacturation='+ tmp[7] + '" rel="external" data-role="button" data-rel="dialog" data-transition="pop">Statut</a>';
-					buffer=buffer + '<a href="modifabonnement.php?idtfacturation='+ tmp[7] + '&idexploitation=' + getUrlParameter('idexploitation') + '" rel="external" data-role="button"  data-rel="dialog" data-transition="pop">Abonnement</a>';
-					buffer=buffer + '<a href="modifmois.php?idtfacturation='+ tmp[7] + '" rel="external" data-role="button"  data-rel="dialog" data-transition="pop">Mois</a>';
+					buffer=buffer + '<a href="modifstatut.php?idtfacturation='+ tmp[7] + '" rel="external" data-role="button" data-mini="true" data-rel="dialog" data-transition="pop">Statut</a>';
+					buffer=buffer + '<a href="modifabonnement.php?idtfacturation='+ tmp[7] + '&idexploitation=' + getUrlParameter('idexploitation') + '" rel="external" data-role="button" data-mini="true" data-rel="dialog" data-transition="pop">Abonnement</a>';
+					buffer=buffer + '<a href="modifmois.php?idtfacturation='+ tmp[7] + '" rel="external" data-role="button" data-mini="true" data-rel="dialog" data-transition="pop">Mois</a>';
 					buffer=buffer + '</div>';
 				buffer=buffer + '</div>';
 				}

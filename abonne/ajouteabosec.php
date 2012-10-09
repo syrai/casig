@@ -10,14 +10,14 @@
 </head>
 <body>	
 <div data-role="dialog">
-	<div data-role="header" data-theme="d">
+	<div data-role="header" data-theme="f">
 			<h1>Nouvel abonnement</h1>
 </div>
 
 <div id="div_formation" data-role="content">
 
 </div>
-</div>
+
 <script type="text/javascript">
 affichage();
 
@@ -31,7 +31,7 @@ function affichage(){
 				},
 			success : function(data,text){	
 				buffer='<h3>Ajouter un nouveau prestataire</h3>'
-				buffer=buffer + '<input type="text" id="raisonsocial" name="raisonsocial">'
+				buffer=buffer + '<input type="text" id="raisonsocial" name="raisonsocial" placeholder="Nom exploitation...">'
 				buffer=buffer + '<select name="abo" id ="abo" data-native-menu="false" data-mini="true">';
 				buffer=buffer + '<option>Abonnement...</option>';
 				var obj = jQuery.parseJSON(data);
@@ -85,5 +85,6 @@ function afficher_resultat_recherche(abos,mois,idexp){
 <?php
 	include_once("../inc_footer.php/footer_cda.inc.php");
 ?>	
+</div>
 </body>
 </html>

@@ -81,15 +81,10 @@
 					buffer=buffer + '<a href="ajoutvalor.php?idexploitation=' + row[0] + '"  rel="external" data-icon="plus" data-role="button" >Ajout valorisation</a>';
 					buffer=buffer + '<a href="parrainage.php"  rel="external" data-icon="alert" data-role="button" >Parrainage</a>';
 				
-					buffer=buffer + '<a href="opt_abonne.php"  rel="external" data-icon="alert" data-role="button" >Options</a>';
-					buffer=buffer + '<a href="../suivi/abticket.php?idexploitation=' + row[0] + '" rel="external" data-icon="alert" data-role="button" >Options</a>';
+					buffer=buffer + '<a href="opt_abonne.php"  rel="external" data-icon="grid" data-role="button" >Options</a>';
+					buffer=buffer + '<a href="../suivi/abticket.php?idexploitation=' + row[0] + '" rel="external" data-icon="arrow-r" data-role="button" >Tickets</a>';
 				buffer=buffer + '</div>';
-				buffer=buffer + '<div data-role="collapsible" id="div_suivi" data_collapsed="true" data-theme="e" data-content-theme="c">';
-					buffer=buffer + '<h1>Historique</h1>';	
-					buffer=buffer + '<div class="content-primary" id="suivi">';
-					afficher_historique_suivi(getUrlParameter('idexploitation'));
-					buffer=buffer + '</div>';
-				buffer=buffer + '</div>';
+				
 				buffer=buffer + '<div data-role="collapsible" data_collapsed="true" data-theme="e" data-content-theme="c">';
 					buffer=buffer + '<h1>Suivi</h1>';	
 					buffer=buffer + '<div class="content-primary" id="historique">';
